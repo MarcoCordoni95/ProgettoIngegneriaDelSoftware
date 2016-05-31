@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.9'
+    }
+}
+
+plugins {
+id 'java'
+id 'eclipse'
+id 'jacoco'
+id 'org.unbroken-dome.test-sets' version '1.2.0'
+
+}
+
+
+apply plugin: 'info.solidsoft.pitest';
+
+repositories {
+    mavenCentral()
+}
+
+testSets {
+    integrationTest
+    mutationTest
+}
+
+pitest {
+	targetClasses = ['it.unimi.di.sweng.lasergame.**'] 
+    testSourceSets = [sourceSets.mutationTest, sourceSets.test]
+    mainSourceSets = [sourceSets.main]
+    jvmArgs = ['-Xmx1024m']
+}
+
+tasks.withType(Test) {
+ reports.html.destination = new File(project.reportsDir, name)
+ reports.junitXml.destination = new File(project.buildDir, "${name}-results")
+ binResultsDir = new File(reports.junitXml.destination, 'binary')
+}
+
+dependencies {
+ 
+    testCompile 'junit:junit:4.12'
+	testCompile 'org.mockito:mockito-core:1.+'
+	testCompile 'org.assertj:assertj-core:3.+'
+	testCompile 'com.github.stefanbirkner:system-rules:1.16.0'
+	integrationTestCompile 'org.assertj:assertj-swing-junit:3.+'	
+}

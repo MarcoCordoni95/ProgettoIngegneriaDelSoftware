@@ -1,5 +1,5 @@
 package it.unimi.di.sweng.lasergame;
 
-public class CellStrategy {
-	   
+public abstract class CellStrategy {
+	public abstract void action(Laser laser);
 }

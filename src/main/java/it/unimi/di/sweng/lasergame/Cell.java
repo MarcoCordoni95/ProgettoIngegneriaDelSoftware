@@ -11,10 +11,8 @@ public class Cell {
 	ArrayList<Laser> laser=null;
 	Mirror specchio=null;
 	boolean flgTarget=false;
-	CellDrawStrategy strategy;
 
 	public Cell(CellDrawStrategy s){
-		strategy=s;
 		laser=new ArrayList<Laser>();
 	}
 	
@@ -27,6 +25,9 @@ public class Cell {
 	public void setLaser(Laser l){
 		laser.add(l);
 	}
+	public ArrayList<Laser> getLaser(){
+		return laser;
+	}
 	public void purgeLaser(){
 		laser=new ArrayList<Laser>();;
 	}
@@ -37,7 +38,6 @@ public class Cell {
 	public void setTarget(boolean b){
 		flgTarget=b;
 	}
-	
-	
+		
 	
 }

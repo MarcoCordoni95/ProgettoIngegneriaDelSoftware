@@ -9,11 +9,11 @@ import java.io.IOException;
 
 public class ShareScore {
 	
-	Integer score = null; 
-	Integer record = null;
+	Integer score = 0; 
+	Integer record = 0;
 	public ShareScore(int score){
-		this.score = score;
-		record = getRecord();
+		getRecord();
+		setScore(score);
 	}
 	
 	public ShareScore(){
@@ -21,29 +21,40 @@ public class ShareScore {
 	}
 	
 	public int getRecord(){
-		int record=0;
+		int newrecord=0;
 		if(!new File("src/myscore.txt").exists()){
-			return record;
+			record=newrecord;
+			return newrecord;
 		}
 		try(BufferedReader br = new BufferedReader(new FileReader("src/myscore.txt"))) {
 		    for(String line; (line = br.readLine()) != null; ) {
-		    	System.out.println(line);
+		    	if(line.contains("RECORD: ")){
+		    		line = line.substring(8, line.length());
+		    		newrecord = Integer.parseInt(line); 
+		    	}
+		    	
 		    }
 		}catch(IOException e){
 			e.printStackTrace();
 		}
-		return record;
+		record=newrecord;
+		return newrecord;
 	}
 	
 	public int getScore(){
 		return score;
 	}
 	
-	public void setNewRecord(int newrecord){
-		record = newrecord;
+	public void setScore(int score){
+		this.score = score;
+		setNewRecord(score);
 	}
 	
-	public void Share(){
+	public void setNewRecord(int newrecord){
+		if(newrecord>record) record = newrecord;
+	}
+	
+	public void share(){
 		try{
 			String content1 = "Punteggio attuale: ";
 			String content2 = "RECORD: ";

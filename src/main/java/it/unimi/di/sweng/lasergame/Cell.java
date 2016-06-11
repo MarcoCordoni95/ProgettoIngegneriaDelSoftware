@@ -1,18 +1,21 @@
 package it.unimi.di.sweng.lasergame;
 
+import java.util.ArrayList;
+
 import javax.swing.JComponent;
 
 public class Cell {
 
 	JComponent drawArea=null;
 	Block blocco=null;
-	Laser laser=null;
+	ArrayList<Laser> laser=null;
 	Mirror specchio=null;
 	boolean flgTarget=false;
 	CellDrawStrategy strategy;
 
 	public Cell(CellDrawStrategy s){
 		strategy=s;
+		laser=new ArrayList<Laser>();
 	}
 	
 	public Mirror getMirror(){
@@ -22,10 +25,10 @@ public class Cell {
 		specchio=m;
 	}
 	public void setLaser(Laser l){
-		laser=l;
+		laser.add(l);
 	}
 	public void purgeLaser(){
-		laser=null;
+		laser=new ArrayList<Laser>();;
 	}
 	public void setBlock(Block b){
 		blocco=b;

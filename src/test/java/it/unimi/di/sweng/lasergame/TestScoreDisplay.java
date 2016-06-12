@@ -15,10 +15,11 @@ public class TestScoreDisplay {
 	
 	private FrameFixture window;
 	private ShareScore sc = new ShareScore();
+	private ScoreDisplay sd = new ScoreDisplay(sc);
 	
 	@Test
 	public void testScoreDisplay() {		
-		ScoreDisplay sd = new ScoreDisplay(sc);
+		//ScoreDisplay sd = new ScoreDisplay(sc);
 		sc.addObserver(sd);
 		assertEquals(sd.getScoreView(),0);
 		sc.setScore(20);
@@ -28,12 +29,12 @@ public class TestScoreDisplay {
 	}
 	
 	@Test
-	public void testViewController() {
+	public void testTextField() {
 		JTextComponentFixture textBox = window.textBox();
 		textBox.deleteText().enterText("30");
 		assertEquals(textBox.text(),"30");	
 		textBox.deleteText().enterText("20");
-		assertEquals(textBox.text(),"20");		
+		assertEquals(textBox.text(),"20");
 	}
 		
 	@Before

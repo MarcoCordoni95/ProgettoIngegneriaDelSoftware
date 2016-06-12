@@ -17,5 +17,10 @@ public abstract class AbstractController {
 	public static AbstractController getController(){
 		return controller;		
 	}
+	
+	public void move(int x, int y, int tox, int toy){}
+	
+	public void rotate(int x, int y){};
+	
 		
 }

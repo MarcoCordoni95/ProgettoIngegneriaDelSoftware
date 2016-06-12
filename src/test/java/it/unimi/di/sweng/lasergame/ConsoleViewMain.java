@@ -66,7 +66,7 @@ public class ConsoleViewMain {
 			tab.add(local);
 		}
 		
-		c.setTabel(tab);
+		c.setTable(tab);
 		c.showAll();
 	}
 

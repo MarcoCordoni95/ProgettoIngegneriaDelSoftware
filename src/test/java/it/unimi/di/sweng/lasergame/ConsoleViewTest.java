@@ -48,10 +48,10 @@ public class ConsoleViewTest {
 		hardcoded.add(nuova);
 		tabel.add(hardcoded);		
 		
-		view.setTabel(tabel);
+		view.setTable(tabel);
 		view.showAll();
 		
-		assertEquals("[2J[;H[0;0f[31m-  [0m[31m|  [0m[37m/ [37m\\ [31m\\ \n",output.getLog());
+		assertEquals("[2J[;H[0;0f[31m-  [0m[31m|  [0m[37m/ [37m\\ [31m\\ \nMosse: 0 Punteggio: 0\n>>\n",output.getLog());
 		
 		
 		hardcoded = new ArrayList<Cell>();
@@ -84,9 +84,9 @@ public class ConsoleViewTest {
 		hardcoded.add(nuova);
 		tabel.add(hardcoded);
 		view.showAll();
-		assertEquals("[2J[;H[0;0f[31m-  [0m[31m|  [0m[37m/ [37m\\ [31m\\ \n"
+		assertEquals("[2J[;H[0;0f[31m-  [0m[31m|  [0m[37m/ [37m\\ [31m\\ \nMosse: 0 Punteggio: 0\n>>\n"
 				+ "[2J[;H[0;0f[31m-  [0m[31m|  [0m[37m/ [37m\\ [31m\\ \n"
-				+ "[31m-  [0m[31m|  [0m[37m/ [37m\\ [31m\\ \n",output.getLog());
+				+ "[31m-  [0m[31m|  [0m[37m/ [37m\\ [31m\\ \nMosse: 0 Punteggio: 0\n>>\n",output.getLog());
 		
 	}
 

@@ -38,6 +38,10 @@ public class MirrorCell extends CellStrategy {
 			}
 	}
 	
-	
-
+	public int getOrientation(){
+		return orientation;
+	}
+	public void setOrientation(int o){
+		orientation=o;
+	}
 }

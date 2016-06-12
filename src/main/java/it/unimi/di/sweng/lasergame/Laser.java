@@ -5,12 +5,13 @@ public class Laser{
 	private boolean win;
 	
 	public Laser(int dir){
-		this.direction =1;
+		this.direction =dir;
 		this.win= false;
 	}
 	
 	public int getDir(){
-		return direction; }
+		return direction; 
+	}
 	
 	public void setDir(int i){
 		this.direction=i;

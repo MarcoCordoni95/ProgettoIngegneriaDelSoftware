@@ -28,19 +28,23 @@ public class Controller implements ActionListener {
 			x=n/5;					//x=riga
 			y=n%5;					//y=colonna
 			if (!(board[x][y] instanceof MirrorCell))
-				c=0;				//controllo che la cella cliccata NON è uno specchio, non mi serve azzerare i valori, dato che al prossimo avvio verranno reinizianizializzati
+				c=0;				//controllo che la cella cliccata NON è uno specchio, inizializzo i clic
 		}	
 	
 	
-		if (c==2){					//questo controllo mi serve per vedere se è il secondo clic, quello che determinerà la posizione
+		if (c==2){					//questo controllo mi serve per vedere se è il secondo click, quello che determinerà la posizione
 			int n=Integer.parseInt(e.getActionCommand());
-			x1=n/5;					//x=riga
-			y1=n%5;					//y=colonna
-			if (!(board[x][y] instanceof EmptyCell)){
-				c=0;				//controllo che il sencondo clic è su una empty cell in modo tale da non sovrascrivere specchi
-				x=y=x1=y1=0; 		//se il secondo clic non è su uno spazio accettabile, azzero il clicounter e i vari vaori
-			}		
-			move(x, y, x1, y1);		
+			x1=n/5;					
+			y1=n%5;					
+			
+			if (x==x1 && y==y1)						//controllo se al secondo click è stato premuto nella stessa casella, quindi si vuole cambiare l'orientamento
+				move(x, y, x1, y1);		
+
+			if (board[x1][y1] instanceof EmptyCell){		//controllo che il sencondo click è su una empty cell in modo tale da non sovrascrivere specchi
+				move(x, y, x1, y1);				
+				c=0;										
+			}
+			c=0;		//qualcosa non quadra, resettati i click
 		}	
 	}
 		

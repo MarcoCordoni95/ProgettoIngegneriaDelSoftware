@@ -1,9 +1,20 @@
 package GraphicView;
 
+import javax.swing.UIManager;
+
+import it.unimi.di.sweng.lasergame.Model;
+
 public class Main {
 
 	public static void main(String[] args) {
-		GraphicView x=new GraphicView(null);
+		Model m=new Model(null);
+		GraphicView x=new GraphicView(m);
+		UIManager.LookAndFeelInfo[] lafInfo = UIManager.getInstalledLookAndFeels();
+		
+		for(UIManager.LookAndFeelInfo x1:lafInfo){
+			System.out.println(x1.getClassName());
+			System.out.println(x1.getName());
+		}
 
 	}
 

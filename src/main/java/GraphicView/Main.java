@@ -1,6 +1,4 @@
-package it.unimi.di.sweng.lasergame;
-
-import GraphicView.GraphicView;
+package GraphicView;
 
 public class Main {
 

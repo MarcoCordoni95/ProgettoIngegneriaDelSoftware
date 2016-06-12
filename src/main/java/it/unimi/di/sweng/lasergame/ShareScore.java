@@ -7,10 +7,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class ShareScore {
+import java.util.Observable; //<----
+
+public class ShareScore extends Observable // <---- aggiunto extends Observable
+{
 	
 	Integer score = 0; 
 	Integer record = 0;
+	
 	public ShareScore(int score){
 		getRecord();
 		setScore(score);
@@ -48,6 +52,9 @@ public class ShareScore {
 	public void setScore(int score){
 		this.score = score;
 		setNewRecord(score);
+		
+		this.setChanged(); //<----
+		this.notifyObservers(score); //<----
 	}
 	
 	public void setNewRecord(int newrecord){
@@ -74,5 +81,4 @@ public class ShareScore {
 			e.printStackTrace();
 		}
 	}
-
 }

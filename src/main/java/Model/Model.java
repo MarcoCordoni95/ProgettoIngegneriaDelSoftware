@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
 
-import it.unimi.di.sweng.lasergame.CellStrategy;
 import it.unimi.di.sweng.lasergame.Laser;
 
 public class Model extends Observable {

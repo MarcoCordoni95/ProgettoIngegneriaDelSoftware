@@ -10,12 +10,12 @@ import javax.swing.*;
 
 import org.hamcrest.core.IsInstanceOf;
 
+import Model.CellStrategy;
 import Model.EmptyCell;
 import Model.MirrorCell;
 import Model.Model;
 import Model.TargetCell;
 import it.unimi.di.sweng.lasergame.AbstractController;
-import it.unimi.di.sweng.lasergame.CellStrategy;
 import it.unimi.di.sweng.lasergame.ViewInterface;
 
 public class GraphicView extends JFrame implements ViewInterface , Observer{

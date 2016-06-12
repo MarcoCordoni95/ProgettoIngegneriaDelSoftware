@@ -1,6 +1,5 @@
 package Model;
 
-import it.unimi.di.sweng.lasergame.CellStrategy;
 import it.unimi.di.sweng.lasergame.Laser;
 
 public class MirrorCell extends CellStrategy {

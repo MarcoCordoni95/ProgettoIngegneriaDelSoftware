@@ -1,6 +1,8 @@
-package it.unimi.di.sweng.lasergame;
+package Model;
 
 import java.util.ArrayList;
+
+import it.unimi.di.sweng.lasergame.Laser;
 
 public abstract class CellStrategy {
 	ArrayList<Laser> laserList  = new ArrayList<Laser>();

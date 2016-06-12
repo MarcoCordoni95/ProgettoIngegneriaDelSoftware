@@ -1,5 +1,6 @@
 package it.unimi.di.sweng.lasergame;
 
+import Model.CellStrategy;
 import Model.EmptyCell;
 import Model.MirrorCell;
 import Model.TargetCell;

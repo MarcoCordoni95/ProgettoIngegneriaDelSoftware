@@ -10,6 +10,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
 
+import Model.CellStrategy;
 import Model.Model;
 
 public class ConsoleView implements Observer, ViewInterface{

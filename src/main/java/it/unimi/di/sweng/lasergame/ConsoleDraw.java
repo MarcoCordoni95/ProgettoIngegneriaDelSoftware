@@ -2,6 +2,7 @@ package it.unimi.di.sweng.lasergame;
 
 import java.util.ArrayList;
 
+import Model.CellStrategy;
 import Model.MirrorCell;
 
 public class ConsoleDraw implements CellDrawStrategy{

@@ -8,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
+import Model.CellStrategy;
 import Model.EmptyCell;
 import Model.MirrorCell;
 

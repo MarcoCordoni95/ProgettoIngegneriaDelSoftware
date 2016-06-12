@@ -1,7 +1,5 @@
 package Model;
 import java.util.Random;
-
-import it.unimi.di.sweng.lasergame.CellStrategy;
 public class RandomCells {
 	private int nMirrors;
 	private int nBlocks;

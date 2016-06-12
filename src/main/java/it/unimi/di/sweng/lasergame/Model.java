@@ -28,6 +28,10 @@ public class Model extends Observable {
 		return this.count;
 	}
 	
+	public CellStrategy[][] getBoard(){
+		return this.board;
+	}
+	
 	public void updateModel (int x, int y, int x1, int y1){	//i parametri sono le coordinate della posizione
 			board[x1][y1] = board[x][y];
 			board[x][y] = new EmptyCell();		//spostato banalmente l'oggetto

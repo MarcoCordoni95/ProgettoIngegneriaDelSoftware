@@ -7,6 +7,18 @@ public class MirrorCell extends CellStrategy {
 		this.orientation=i;
 	}
 	
+	public int getOrientation(){
+		return this.orientation;
+	}
+	
+	public void setOrientation(){
+		if (this.orientation==1)
+			this.orientation=0;
+		
+		if (this.orientation==0)
+			this.orientation=1;
+	}
+	
 	public Laser getLaser(){
 		return l;
 	}
@@ -24,7 +36,6 @@ public class MirrorCell extends CellStrategy {
 	 * QUANDO VERRANNO SPOSTATI GLI SPECCHI C'E' BISOGNO DI UN METODO CHE RESETTA IL LASER A FALSE.
  	 * 
 	 */
-	
 	@Override
 	public void action (Laser laser){	
 		int x;

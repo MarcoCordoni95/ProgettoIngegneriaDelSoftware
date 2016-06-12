@@ -33,9 +33,13 @@ public class Model extends Observable {
 	}
 	
 	public void updateModel (int x, int y, int x1, int y1){	//i parametri sono le coordinate della posizione
-			board[x1][y1] = board[x][y];
-			board[x][y] = new EmptyCell();		//spostato banalmente l'oggetto
+			if (x==x1 && y==y1)
+				((MirrorCell)board[x][y]).setOrientation(); //casto l'oggetto perchè a questo punto sono mooooolto sicura che l'oggetto è di tipo mirrorCEll, nel controller c'è il controllo apposta
 			
+			else{
+				board[x1][y1] = board[x][y];
+				board[x][y] = new EmptyCell();		//spostato banalmente l'oggetto
+			}
 			count++;
 	
 		//	laser.CALCOLOLASER(board);  ancora non so cosa ritorna o cosa fa

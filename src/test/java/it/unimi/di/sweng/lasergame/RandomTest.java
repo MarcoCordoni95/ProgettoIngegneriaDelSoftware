@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.junit.rules.Timeout;
 import org.mockito.Mockito;
 
+import Model.RandomCells;
+
 
 
 

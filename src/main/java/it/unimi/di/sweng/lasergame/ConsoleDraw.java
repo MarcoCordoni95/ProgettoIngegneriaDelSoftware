@@ -2,6 +2,8 @@ package it.unimi.di.sweng.lasergame;
 
 import java.util.ArrayList;
 
+import Model.MirrorCell;
+
 public class ConsoleDraw implements CellDrawStrategy{
 	private final String DEFAULT = " \033[0m"; 
 	private final String GREY = "\033[37m";

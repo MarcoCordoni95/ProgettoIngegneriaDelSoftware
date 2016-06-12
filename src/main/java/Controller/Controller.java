@@ -1,7 +1,13 @@
-package it.unimi.di.sweng.lasergame;
+package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import Model.EmptyCell;
+import Model.MirrorCell;
+import Model.Model;
+import it.unimi.di.sweng.lasergame.CellStrategy;
+import it.unimi.di.sweng.lasergame.ViewInterface;
 
 public class Controller implements ActionListener {
 

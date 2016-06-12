@@ -8,6 +8,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
+import Model.EmptyCell;
+import Model.MirrorCell;
+
 public class ConsoleViewTest {
 	
 	@Rule

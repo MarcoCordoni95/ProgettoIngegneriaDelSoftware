@@ -1,5 +1,7 @@
 package it.unimi.di.sweng.lasergame;
 
+import Model.Model;
+
 public abstract class AbstractController {
 
 	protected Model model;

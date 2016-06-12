@@ -1,5 +1,9 @@
 package it.unimi.di.sweng.lasergame;
 
+import Model.EmptyCell;
+import Model.MirrorCell;
+import Model.TargetCell;
+
 public class Laser{
 	private int direction;
 	private boolean win;
@@ -31,24 +35,13 @@ public class Laser{
 	}
 	
 
-	private void setLaser(EmptyCell c){
-		if(!c.issetLaser()){
+	private void setLaser(CellStrategy c){
+		if(!c.isSetLaserList()){
 			c.setLaser(this);
 		}
 	}
 	
-	private void setLaser(TargetCell c){
-		if(!c.issetLaser()){
-			c.setLaser(this);
-		}
-	}
 	
-	private void setLaser(MirrorCell c){
-		if(!c.issetLaser()){
-			c.setLaser(this);
-		}
-		changeDirection(c);
-	}
 	
 	private void changeDirection(MirrorCell c) {
 		c.action(this);

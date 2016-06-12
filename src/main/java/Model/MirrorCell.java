@@ -1,8 +1,11 @@
-package it.unimi.di.sweng.lasergame;
+package Model;
+
+import it.unimi.di.sweng.lasergame.CellStrategy;
+import it.unimi.di.sweng.lasergame.Laser;
 
 public class MirrorCell extends CellStrategy {
 	private int orientation;	//per ora pensavo di fare, 0 / e 1 \ (ovviamente gli slash sono gli specchi)
-	private Laser l = null;
+	
 	public MirrorCell (int i){
 		this.orientation=i;
 	}
@@ -19,18 +22,9 @@ public class MirrorCell extends CellStrategy {
 			this.orientation=1;
 	}
 	
-	public Laser getLaser(){
-		return l;
-	}
 	
-	public void setLaser(Laser l){
-		this.l = l;
-	}
 	
-	public boolean issetLaser(){
-		if(l!=null) return true;
-		else return false;
-	}
+
 	 
 	/*
 	 * QUANDO VERRANNO SPOSTATI GLI SPECCHI C'E' BISOGNO DI UN METODO CHE RESETTA IL LASER A FALSE.
@@ -67,9 +61,7 @@ public class MirrorCell extends CellStrategy {
 			}
 	}
 	
-	public int getOrientation(){
-		return orientation;
-	}
+
 	public void setOrientation(int o){
 		orientation=o;
 	}

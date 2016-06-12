@@ -2,7 +2,7 @@ package GraphicView;
 
 import javax.swing.UIManager;
 
-import it.unimi.di.sweng.lasergame.Model;
+import Model.Model;
 
 public class Main {
 

@@ -6,7 +6,7 @@ public class RandomCells {
 	
 	
 	
-	public  CellStrategy[][]  filler(CellStrategy[][] board){//passo la matrice delle celle che so essere 5x5
+	public  CellStrategy[][]filler(CellStrategy[][] board){//passo la matrice delle celle che so essere 5x5
 		Random rand=new Random();
 		boolean setTarget=false;
 		
@@ -36,6 +36,7 @@ public class RandomCells {
 				if (board[r][c]==null)
 					board[r][c]=new EmptyCell();
 			}
+		return board;
 		
 	}
 }

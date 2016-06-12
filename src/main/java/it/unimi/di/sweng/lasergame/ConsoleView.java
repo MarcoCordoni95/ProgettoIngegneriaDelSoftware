@@ -43,5 +43,7 @@ public class ConsoleView implements Observer, ViewInterface{
 		tabella=t;
 	}
 	
+	
+	
 
 }

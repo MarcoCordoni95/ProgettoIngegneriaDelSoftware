@@ -2,7 +2,7 @@ package it.unimi.di.sweng.lasergame;
 
 import java.util.ArrayList;
 
-public class Main {
+public class ConsoleViewMain {
 	public static void main(String [] args){
 		ConsoleView c = new ConsoleView();
 		ArrayList<ArrayList<Cell>> tab = new ArrayList<ArrayList<Cell>>();

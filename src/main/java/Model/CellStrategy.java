@@ -16,8 +16,7 @@ public abstract class CellStrategy {
 		return this.laserList;
 	}
 	public boolean isSetLaserList(){
-		if(this.laserList!=null) return true;
-		else return false;
+		return (laserList.size()!=0);
 	}
 	
 	/*

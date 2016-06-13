@@ -12,7 +12,7 @@ public class Laser {
 	private boolean win;
 
 	//
-	private int x = 0, y = 4;
+	private int x = 4, y = 0;
 	private int score;
 	//
 	public int getScore(){

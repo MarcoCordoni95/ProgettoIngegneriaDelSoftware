@@ -52,6 +52,15 @@ public class TestLaser {
        CellStrategy[] p =laser1.newGetPercorso(board);
        for(CellStrategy u : p)
     	   System.out.println( u );
+       
+       System.out.println("");
+       System.out.println("");
+       
+       for(int i=0; i<5; i++){
+           for(int j=0; j<5; j++)
+        	   System.out.print(board[i][j]);
+           System.out.println("");
+       }
 
 	}
 }

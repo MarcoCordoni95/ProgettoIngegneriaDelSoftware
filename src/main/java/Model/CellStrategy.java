@@ -16,15 +16,14 @@ public abstract class CellStrategy {
 		return this.laserList;
 	}
 	public boolean isSetLaserList(){
-		if(this.laserList!=null) return true;
-		else return false;
+		return (laserList.size()!=0);
 	}
 	
 	/*
 	 *  da richiamare ogni volta che qualcosa cambia nella board
 	 */
 	public void purgeLaser(){
-		this.laserList=new ArrayList<Laser>();
+		this.laserList.clear();
 	}
 	
 }

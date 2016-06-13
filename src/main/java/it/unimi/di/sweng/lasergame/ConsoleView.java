@@ -73,7 +73,7 @@ public class ConsoleView implements Observer, ViewInterface{
 				int y = scanner.nextInt();
 				int tx = scanner.nextInt();
 				int ty = scanner.nextInt();
-				
+				scanner.close();
 				controller.move(x,y,tx,ty);
 			}
 			else if(letta.contains("r")){
@@ -81,6 +81,7 @@ public class ConsoleView implements Observer, ViewInterface{
 				Scanner scanner = new Scanner(letta);
 				int x = scanner.nextInt();
 				int y = scanner.nextInt();
+				scanner.close();
 				controller.rotate(x,y);
 			}
 			else if(letta.contains("q")){

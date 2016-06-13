@@ -37,7 +37,7 @@ public class TestLaser {
 		assertEquals(laser1.getWin(),true);
 	}
 	
-	/*@Test
+	@Test
 	public void TestGetPercorso(){
 		Laser laser1 = new Laser();
 		RandomCells rand=new RandomCells();
@@ -49,7 +49,7 @@ public class TestLaser {
 								{null,null,null,null,null}};
       
        board=rand.filler(board);       
-       board=laser1.getPercorso(board);
+     //  board=laser1.getPercorso(board);
 
-	}*/
+	}
 }

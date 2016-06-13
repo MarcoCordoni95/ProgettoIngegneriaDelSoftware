@@ -29,7 +29,7 @@ public class TestScoreDisplay {
 	public void testScoreDisplay() {		
 		//ScoreDisplay sd = new ScoreDisplay(sc);
 		sc.addObserver(sd);
-		//assertEquals(sd.getScoreView(),0);
+		assertEquals(sd.getScoreView(),0);
 		sc.setScore(20);
 		assertEquals(sd.getScoreView(),20);
 		sc.setScore(30);

@@ -15,6 +15,8 @@ import Model.MirrorCell;
 import Model.Model;
 import Model.RandomCells;
 import Model.TargetCell;
+import it.unimi.di.sweng.lasergame.ScoreDisplay;
+import it.unimi.di.sweng.lasergame.ShareScore;
 import it.unimi.di.sweng.lasergame.ViewInterface;
 
 public class GraphicView extends JFrame implements ViewInterface , Observer{
@@ -23,6 +25,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 	private Controller cont;
 	private JPanel buttonGrid;
 	private JPanel optionGrid;
+	
 	
 
 	public GraphicView(Model m){
@@ -36,6 +39,10 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.model=m;
+		
+		ShareScore score=new ShareScore();
+		ScoreDisplay display=new ScoreDisplay(score);
+		
 		
 		this.buttonGrid=new JPanel(new GridLayout(5, 5));
 		this.optionGrid=new JPanel(new BorderLayout());
@@ -89,6 +96,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		CellStrategy[][] board=this.model.getBoard();
 		ButtonStrategy b=null; 
 		int i=0;
+		String s=null;
 		
 		for(int r=0;r<5;r++)
 			for (int c=0;c<5;c++){
@@ -98,7 +106,13 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 					this.buttonGrid.add(b);
 				}
 				if(board[r][c] instanceof MirrorCell){
-					b=new MirrorButton(i++,RandomCells.randomMirror());
+					int x= ((MirrorCell)board[r][c]).getOrientation();
+					if (x==0)
+						s="/";
+					if (x==1)
+						s="\\";
+						
+					b=new MirrorButton(i++,s);
 					b.addActionListener(this.cont);
 					this.buttonGrid.add(b);
 					
@@ -125,7 +139,9 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
+		this.addButton();
+		this.buttonGrid.revalidate();
+		this.buttonGrid.repaint();
 		
 	}
 

@@ -24,7 +24,7 @@ public abstract class CellStrategy {
 	 *  da richiamare ogni volta che qualcosa cambia nella board
 	 */
 	public void purgeLaser(){
-		this.laserList=new ArrayList<Laser>();
+		this.laserList.clear();
 	}
 	
 }

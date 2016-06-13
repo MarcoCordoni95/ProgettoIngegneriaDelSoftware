@@ -17,8 +17,9 @@ public class MirrorCell extends CellStrategy {
 		if (this.orientation==1)
 			this.orientation=0;
 		
-		if (this.orientation==0)
-			this.orientation=1;
+		else if (this.orientation==0)
+				this.orientation=1;
+			else return;
 	}
 	
 	

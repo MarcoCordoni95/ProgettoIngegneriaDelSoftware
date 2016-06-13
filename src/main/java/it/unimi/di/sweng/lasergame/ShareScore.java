@@ -12,8 +12,8 @@ import java.util.Observable; //<----
 public class ShareScore extends Observable // <---- aggiunto extends Observable
 {
 	
-	Integer score = 0; 
-	Integer record = 0;
+	private Integer score = 0; 
+	private Integer record = 0;
 	
 	public ShareScore(int score){
 		getRecord();

@@ -139,10 +139,11 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		this.buttonGrid.removeAll();
 		this.addButton();
 		this.buttonGrid.revalidate();
 		this.buttonGrid.repaint();
-		
+		//SwingUtilities.updateComponentTreeUI(this);
 	}
 
 	public Controller getController() {

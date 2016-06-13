@@ -15,8 +15,17 @@ public class Laser {
 	private int x = 4, y = 0;
 	private int score;
 	//
-	public int getScore(){
-		return this.score;
+	
+	
+	public class Support{
+		public int row;
+		public int column;
+		
+		public Support(int x ,int y){
+			this.row=x;
+			this.column=y;
+		}
+		
 	}
 	
 	public Laser(){
@@ -27,6 +36,9 @@ public class Laser {
 	public Laser(int dir) {
 		this.direction = dir;
 		this.win = false;
+	}
+	public int getScore(){
+		return this.score;
 	}
 
 	public int getDir() {
@@ -51,60 +63,11 @@ public class Laser {
 		}
 	}
 
-	private void changeDirection(MirrorCell c) {
-		c.action(this);
-	}
-
-	private int[] changeCoordinates(int x, int y) {
-		int dir = getDir();
-		switch (dir) {
-		case 0: // UP
-			x = (x - 1) % 5;
-			break;
-		case 1: // RIGHT
-			y = (y + 1) % 5;
-			break;
-		case 2: // DOWN
-			x = (x + 1) % 5;
-			break;
-		case 3: // LEFT
-			y = (y - 1) % 5;
-			break;
-		}
-		return new int[] { x, y };
-	}
-
-	/*
-	 * SPECIFICHE PER METODO: TargetCell -> Traguardo EmptyCell -> cella vuota
-	 * MirrorCell -> Specchio, in base al suo orientamento laser si muove
-	 */
-	public CellStrategy[][] getPercorso(CellStrategy[][] cs) {
-		int[] xy = { 4, 0 };
-		while (!getWin()) {
-			// Traguardo
-			if (cs[xy[0]][xy[1]] instanceof TargetCell) {
-				setLaser((TargetCell) cs[xy[0]][xy[1]]);
-				setWin();
-				break;
-			}
-			// Cella vuota
-			else if (cs[xy[0]][xy[1]] instanceof EmptyCell) {
-				setLaser((EmptyCell) cs[xy[0]][xy[1]]);
-			}
-			// Specchio
-			else if (cs[xy[0]][xy[1]] instanceof MirrorCell) {
-				setLaser((MirrorCell) cs[xy[0]][xy[1]]);
-			}
-			xy = changeCoordinates(xy[0], xy[1]);
-		}
-		return cs;
-	}
-
-	// ######################à
-	public CellStrategy[] newGetPercorso(CellStrategy[][] board) {
-		ArrayList<CellStrategy> journey=new ArrayList <CellStrategy>();
+	
+		public Support[] newGetPercorso(CellStrategy[][] board) {
+		ArrayList<Support> journey=new ArrayList <Support>();
 		while (x >=0 && x<=4 && y>=0 && y<=4 && !win){
-			journey.add(board[x][y]);
+			journey.add(new Support(x, y));
 			board[x][y].action(this);
 			board[x][y].setLaser(this);
 			
@@ -136,7 +99,7 @@ public class Laser {
 			}
 		}
 		
-		CellStrategy [] p={null};
+		Support [] p={null};
 		this.score=journey.size();
 		x=4; y=0;	//ripristino le coordinate iniziali per fargli rifare il ciclo
 		return journey.toArray(p); 	//ritorno la lista di celle percorse con in fondo un muro o un target

@@ -8,19 +8,19 @@ import java.util.Observer;
 
 import javax.swing.*;
 
-import org.hamcrest.core.IsInstanceOf;
-
+import Controller.Controller;
 import Model.CellStrategy;
 import Model.EmptyCell;
 import Model.MirrorCell;
 import Model.Model;
+import Model.RandomCells;
 import Model.TargetCell;
-import it.unimi.di.sweng.lasergame.AbstractController;
 import it.unimi.di.sweng.lasergame.ViewInterface;
 
 public class GraphicView extends JFrame implements ViewInterface , Observer{
 	
 	private Model model;
+	private Controller cont;
 	private JPanel buttonGrid;
 	private JPanel optionGrid;
 	
@@ -29,6 +29,9 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		super("Laser Game");
 		Container co=this.getContentPane();
 		co.setLayout(new BorderLayout());
+		
+		this.cont =new Controller(m, this);	//il controller per questa finestra lo creo all'interno della finestra stessa,
+											//se mi dovesse servire lo posso ottenere tramite il metodo getController() qui in fondo
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -51,9 +54,14 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		
 		
 		
+		
+	}
+	
+	public void start(){
 		//this.setLookandFeel();
 		this.setSize(500, 500);
 		this.setVisible(true);
+		
 	}
 
 	private void setLookandFeel() {
@@ -79,27 +87,35 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 
 	private void addButton() {
 		CellStrategy[][] board=this.model.getBoard();
+		ButtonStrategy b=null; 
 		int i=0;
 		
 		for(int r=0;r<5;r++)
 			for (int c=0;c<5;c++){
-				if(board[r][c] instanceof EmptyCell)
-					this.buttonGrid.add(new EmptyButton(i++));
-				if(board[r][c] instanceof MirrorCell)
-					this.buttonGrid.add(new MirrorButton(i++));
-				if(board[r][c] instanceof TargetCell)
-					this.buttonGrid.add(new TargetButton(i++));
+				if(board[r][c] instanceof EmptyCell){
+					b=new EmptyButton(i++);
+					b.addActionListener(this.cont);
+					this.buttonGrid.add(b);
+				}
+				if(board[r][c] instanceof MirrorCell){
+					b=new MirrorButton(i++,RandomCells.randomMirror());
+					b.addActionListener(this.cont);
+					this.buttonGrid.add(b);
+					
+				}
+				if(board[r][c] instanceof TargetCell){
+					b=new TargetButton(i++,"target");
+					b.addActionListener(this.cont);
+					this.buttonGrid.add(b);
+					
+				}
 				
 			}
 		
 		
 	}
 
-	@Override
-	public void addListener(AbstractController contr) {
-		this.addListener(contr);
-		
-	}
+
 
 	@Override
 	public void showAll() {
@@ -111,6 +127,11 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Controller getController() {
+		
+		return this.cont;
 	}
 	
 

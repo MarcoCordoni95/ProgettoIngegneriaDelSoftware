@@ -3,6 +3,7 @@ package GraphicView;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -21,10 +22,9 @@ public class ImageDemon {
 	public static ImageDemon ImgDem;
 	
 	public ImageDemon(){
-		Image i;
 		try {
-			laserX = ImageIO.read(ClassLoader.getSystemResourceAsStream("lx.png"));
-			laserY = ImageIO.read(ClassLoader.getSystemResourceAsStream("ly.png"));
+			laserX = ImageIO.read(new File("./src/Res/lx.png/"));
+			laserY = ImageIO.read(new File("./src/Res/ly.png/"));
 
 			
 		} catch (IOException e) {

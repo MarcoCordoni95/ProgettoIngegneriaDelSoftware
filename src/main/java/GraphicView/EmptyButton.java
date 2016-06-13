@@ -10,7 +10,6 @@ import it.unimi.di.sweng.lasergame.Direction;
 import it.unimi.di.sweng.lasergame.Laser;
 
 public class EmptyButton extends ButtonStrategy {
-	boolean images=false;
 	
 	public EmptyButton(int i,CellStrategy cs){//il numero passato sarà un identificatore univoco all'interno della griglia
 		

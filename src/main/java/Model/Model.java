@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Observable;
 
 import it.unimi.di.sweng.lasergame.Laser;
+import it.unimi.di.sweng.lasergame.Laser.Support;
 
 public class Model extends Observable {
 	private Laser laser;
@@ -15,7 +16,7 @@ public class Model extends Observable {
 									{null, null, null, null, null}
 									};
 	private int count;		//contatore delle mosse
-						
+	Support[] colorTrack;
 	
 	
 	public Model (Laser laser){
@@ -43,13 +44,15 @@ public class Model extends Observable {
 				board[x][y] = new EmptyCell();		//spostato banalmente l'oggetto
 			}
 			count++;
-	
-		//	laser.CALCOLOLASER(board);  ancora non so cosa ritorna o cosa fa
+			this.colorTrack=laser.newGetPercorso(board);
 			this.setChanged();
 			this.notifyObservers(); 	//passo alla view tutto quello che contiene il model , gli passo l'oggetto osservato, ma non sono sicura di quello che fa () o (this), sulle api non è specificato 
 			
 	}
-	
+	public Support[] getTrack(){
+		return this.colorTrack;
+		
+	}
 	public ArrayList<ArrayList<CellStrategy>> getTabel(){
 		ArrayList<ArrayList<CellStrategy>> ret = new ArrayList<ArrayList<CellStrategy>>(); 
 		for(int i=0; i<5; i++){

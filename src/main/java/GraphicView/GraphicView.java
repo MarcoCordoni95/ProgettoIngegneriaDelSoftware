@@ -2,6 +2,7 @@ package GraphicView;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
@@ -40,16 +41,16 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		
 		this.model=m;
 		
-		ShareScore score=new ShareScore();
-		ScoreDisplay display=new ScoreDisplay(score);
+	
 		
 		
 		this.buttonGrid=new JPanel(new GridLayout(5, 5));
-		this.optionGrid=new JPanel(new BorderLayout());
+		this.optionGrid=new JPanel(new FlowLayout());
 		
 		this.addButton();
-		this.optionGrid.add(new JLabel("qui contatori vari"));
+		//this.optionGrid.add(new JLabel("qui contatori vari"));
 		
+		this.addOption();
 		
 		
 		
@@ -64,6 +65,24 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		
 	}
 	
+	private void addOption() {
+		ShareScore score=new ShareScore();
+		ScoreDisplay display=new ScoreDisplay(score);
+		score.addObserver(display);
+		
+		JLabel scoreL=new JLabel("Score: ");
+		JLabel nMoves=new JLabel("N°mosse "+this.model.getCount());
+		
+		this.optionGrid.setSize(200,100);
+		
+		
+		this.optionGrid.add(scoreL);
+		this.optionGrid.add(display);
+		this.optionGrid.add(nMoves);
+		
+		
+	}
+
 	public void start(){
 		//this.setLookandFeel();
 		this.setSize(500, 500);
@@ -148,10 +167,13 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		this.buttonGrid.removeAll();
+		this.optionGrid.removeAll();
 		this.addButton();
+		this.addOption();
 		this.buttonGrid.revalidate();
+		this.optionGrid.revalidate();
 		this.buttonGrid.repaint();
-		//SwingUtilities.updateComponentTreeUI(this);
+		this.optionGrid.revalidate();
 	}
 
 	public Controller getController() {

@@ -102,7 +102,13 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		for(int r=0;r<5;r++)
 			for (int c=0;c<5;c++){
 				if(board[r][c] instanceof EmptyCell){
-					b=new EmptyButton(i++);
+					if(Math.random()<0.5){
+						board[r][c].setLaser(new Laser(1));
+						if(Math.random()<0.5){
+							board[r][c].setLaser(new Laser(3));
+						}
+					}
+					b=new EmptyButton(i++,board[r][c] );
 					b.addActionListener(this.cont);
 					this.buttonGrid.add(b);
 				}
@@ -113,13 +119,14 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 					if (x==1)
 						s="\\";
 						
-					b=new MirrorButton(i++,s);
+					b=new MirrorButton(i++,s,board[r][c] );
 					b.addActionListener(this.cont);
+
 					this.buttonGrid.add(b);
 					
 				}
 				if(board[r][c] instanceof TargetCell){
-					b=new TargetButton(i++,"target");
+					b=new TargetButton(i++,"target",board[r][c] );
 					b.addActionListener(this.cont);
 					this.buttonGrid.add(b);
 					

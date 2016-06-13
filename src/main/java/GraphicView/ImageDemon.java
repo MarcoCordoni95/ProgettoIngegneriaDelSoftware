@@ -14,48 +14,43 @@ import com.sun.org.apache.bcel.internal.util.ClassLoader;
 import it.unimi.di.sweng.lasergame.Direction;
 public class ImageDemon {
 	
-	ImageIcon laserX;
-	ImageIcon laserY;
-	ImageIcon mirror;
+	Image laserX;
+	Image laserY;
+	Image mirror;
+	
+	public static ImageDemon ImgDem;
 	
 	public ImageDemon(){
 		Image i;
 		try {
-			i = ImageIO.read(ClassLoader.getSystemResourceAsStream("lx.png"));
-			laserX = new ImageIcon(i);
-			i = ImageIO.read(ClassLoader.getSystemResourceAsStream("ly.png"));
-			laserY = new ImageIcon(i);
+			laserX = ImageIO.read(ClassLoader.getSystemResourceAsStream("lx.png"));
+			laserY = ImageIO.read(ClassLoader.getSystemResourceAsStream("ly.png"));
+
 			
 		} catch (IOException e) {
 			
 			e.printStackTrace();
-		}					
+		}	
+		ImgDem=this;
 	}
 	
-	public void drawLaser(JButton b, int direction){
-		switch(direction){
-	case Direction.DOWN:
-	case Direction.UP:
-			b.setIcon(laserY);
-		break;
-		case Direction.LEFT:
-		case Direction.RIGHT:
-			b.setIcon(laserX);
-		break;
+	public static ImageDemon getImageDemon(){
+		if(ImgDem==null){
+			new ImageDemon();
 		}
-		
+		return ImgDem;
 	}
-
 	
+		
 	public void drawMirror(JButton b, int direction){
 		
 	}
 
-	public ImageIcon getY(){
+	public Image getY(){
 		return laserY;
 	}
 	
-	public ImageIcon getX(){
+	public Image getX(){
 		return laserX;
 	}
 	

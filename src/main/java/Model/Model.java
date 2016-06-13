@@ -45,8 +45,8 @@ public class Model extends Observable {
 			count++;
 	
 		//	laser.CALCOLOLASER(board);  ancora non so cosa ritorna o cosa fa
-			
-			notifyObservers(); 	//passo alla view tutto quello che contiene il model , gli passo l'oggetto osservato, ma non sono sicura di quello che fa () o (this), sulle api non è specificato 
+			this.setChanged();
+			this.notifyObservers(); 	//passo alla view tutto quello che contiene il model , gli passo l'oggetto osservato, ma non sono sicura di quello che fa () o (this), sulle api non è specificato 
 			
 	}
 	

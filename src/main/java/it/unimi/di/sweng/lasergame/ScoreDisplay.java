@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 public class ScoreDisplay extends JLabel implements Observer {
 	
 	public ScoreDisplay(ShareScore sc){
-		super();
+		super(sc.getScore()+"");
 	}
 
 	@Override

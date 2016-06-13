@@ -58,7 +58,8 @@ public class ShareScore extends Observable // <---- aggiunto extends Observable
 	}
 	
 	public void setNewRecord(int newrecord){
-		if(newrecord>record) record = newrecord;
+		if(newrecord>record) 
+			record = newrecord;
 	}
 	
 	public void share(){

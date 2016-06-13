@@ -13,7 +13,7 @@ public class TestLaser {
 	public void TestGetDir(){
 		Laser laser1 = new Laser();
 		Laser laser2 = new Laser(3);
-		assertEquals(laser1.getDir(),0);
+		assertEquals(laser1.getDir(),1);
 		assertEquals(laser2.getDir(),3);
 	}
 	
@@ -38,7 +38,7 @@ public class TestLaser {
 	}
 	
 	@Test
-	public void TestGetPercorso(){
+	public void TestNewGetPercorso(){
 		Laser laser1 = new Laser();
 		RandomCells rand=new RandomCells();
 		
@@ -49,7 +49,9 @@ public class TestLaser {
 								{null,null,null,null,null}};
       
        board=rand.filler(board);       
-     //  board=laser1.getPercorso(board);
+       CellStrategy[] p =laser1.newGetPercorso(board);
+       for(CellStrategy u : p)
+    	   System.out.println( u );
 
 	}
 }

@@ -136,7 +136,7 @@ public class Laser {
 			}
 		}
 		
-		CellStrategy [] p=null;
+		CellStrategy [] p={null};
 		this.score=journey.size();
 		x=4; y=0;	//ripristino le coordinate iniziali per fargli rifare il ciclo
 		return journey.toArray(p); 	//ritorno la lista di celle percorse con in fondo un muro o un target

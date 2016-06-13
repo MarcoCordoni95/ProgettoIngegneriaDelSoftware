@@ -13,7 +13,7 @@ import Model.CellStrategy;
 import Model.EmptyCell;
 import Model.MirrorCell;
 import Model.Model;
-import Model.RandomCells;
+import it.unimi.di.sweng.lasergame.Laser;
 import Model.TargetCell;
 import it.unimi.di.sweng.lasergame.ScoreDisplay;
 import it.unimi.di.sweng.lasergame.ShareScore;
@@ -97,6 +97,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		ButtonStrategy b=null; 
 		int i=0;
 		String s=null;
+		ImageDemon id=new ImageDemon();
 		
 		for(int r=0;r<5;r++)
 			for (int c=0;c<5;c++){

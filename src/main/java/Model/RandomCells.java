@@ -39,4 +39,18 @@ public class RandomCells {
 		return board;
 		
 	}
+	
+	public static  String randomMirror(){
+		Random rand=new Random();
+		int i=rand.nextInt(2);
+		
+		
+		if (i==0)
+			return "/";
+		else if(i==1)
+			return "\\";
+			else
+				return null;
+		
+	}
 }

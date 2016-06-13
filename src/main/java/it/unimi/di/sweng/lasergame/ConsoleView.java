@@ -1,6 +1,5 @@
 package it.unimi.di.sweng.lasergame;
 
-import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,11 +25,6 @@ public class ConsoleView implements Observer, ViewInterface{
 	}
 
 	
-	@Override
-	public void addListener(AbstractController contr) {
-		controller=contr;
-		
-	}
 
 	@Override
 	public void showAll() {

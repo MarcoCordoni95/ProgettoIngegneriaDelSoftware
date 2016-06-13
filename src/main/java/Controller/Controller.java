@@ -3,6 +3,7 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import GraphicView.ButtonStrategy;
 import Model.CellStrategy;
 import Model.EmptyCell;
 import Model.MirrorCell;
@@ -12,13 +13,13 @@ import it.unimi.di.sweng.lasergame.ViewInterface;
 public class Controller implements ActionListener {
 
 	int c=0, x, x1, y1, y;
-	CellStrategy[][] board;
+	protected CellStrategy[][] board;
 	
 	protected Model model;
 	protected ViewInterface view;
 	
 	
-	private Controller(Model m, ViewInterface v) {
+	public Controller(Model m, ViewInterface v) {
 		model=m;
 		view=v;
 		board=m.getBoard();
@@ -28,9 +29,10 @@ public class Controller implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		c++;
-	
+		ButtonStrategy butt= (ButtonStrategy) e.getSource();
+		
 		if(c==1){	
-			int n=Integer.parseInt(e.getActionCommand());
+			int n=Integer.parseInt(butt.getName());
 			x=n/5;					//x=riga
 			y=n%5;					//y=colonna
 			if (!(board[x][y] instanceof MirrorCell))
@@ -39,7 +41,7 @@ public class Controller implements ActionListener {
 	
 	
 		if (c==2){					//questo controllo mi serve per vedere se è il secondo click, quello che determinerà la posizione
-			int n=Integer.parseInt(e.getActionCommand());
+			int n=Integer.parseInt(butt.getName());
 			x1=n/5;					
 			y1=n%5;					
 			

@@ -28,7 +28,7 @@ public class TestScoreDisplay {
 		assertEquals(sd.getScoreView(),30);
 	}
 	
-	@Test
+	/*@Test
 	public void testTextField() {
 		JTextComponentFixture textBox = window.textBox();
 		textBox.deleteText().enterText("30");
@@ -55,5 +55,5 @@ public class TestScoreDisplay {
 	@After
 	public void tearDown(){
 		window.cleanUp();
-	}
+	}*/
 }

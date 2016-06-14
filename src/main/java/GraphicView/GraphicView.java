@@ -115,7 +115,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		CellStrategy[][] board=this.model.getBoard();
 		ButtonStrategy b=null; 
 		int i=0;
-		String s=null;
+		String s="";
 		
 		for(int r=0;r<5;r++)
 			for (int c=0;c<5;c++){
@@ -126,10 +126,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 				}
 				else if(board[r][c] instanceof MirrorCell){
 					int x= ((MirrorCell)board[r][c]).getOrientation();
-					if (x==0)
-						s="/";
-					if (x==1)
-						s="\\";
+				
 						
 					b=new MirrorButton(i++,s,board[r][c] );
 					b.addActionListener(this.cont);
@@ -138,9 +135,13 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 					
 				}
 				else if(board[r][c] instanceof TargetCell){
-					b=new TargetButton(i++,"target",board[r][c] );
+					b=new TargetButton(i++,"Target",board[r][c] );
 					b.addActionListener(this.cont);
 					this.buttonGrid.add(b);
+					if(((TargetButton)b).getWin()){
+						JOptionPane.showMessageDialog(this, "Contratulations.\n You have bested me this time");
+						
+					}
 					
 				}
 				

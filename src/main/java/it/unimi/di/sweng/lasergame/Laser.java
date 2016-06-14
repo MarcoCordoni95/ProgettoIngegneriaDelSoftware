@@ -10,7 +10,7 @@ import Model.TargetCell;
 public class Laser {
 	private int direction;
 	private int fromDirection;
-	private boolean win;
+	private boolean win=false;
 
 	//
 	private int x = 4, y = 0;

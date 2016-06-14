@@ -29,6 +29,7 @@ public class Model extends Observable {
 		this.laser=laser;
 		this.laser.newGetPercorso(this.board);
 		this.score=this.laser.getScore();	
+		this.win=this.laser.getWin();
 	} 
 	
 	public String[] getDifficulties(){
@@ -44,6 +45,7 @@ public class Model extends Observable {
 		this.win=false;
 		this.laser.setWin(false);
 		this.count=0;
+	
 	}
 	public void setDifficulty(int i){
 		this.difficulty=i;
@@ -60,12 +62,7 @@ public class Model extends Observable {
 	public CellStrategy[][] getBoard(){
 		return this.board;
 	}
-	public boolean getLose(){
-		return this.lose;
-	}
-	public boolean getWin(){
-		return this.win;
-	}
+	
 	
 	
 	public void updateModel (int x, int y, int x1, int y1){	//i parametri sono le coordinate della posizione
@@ -101,9 +98,15 @@ public class Model extends Observable {
 			if (win)
 				return "Vedo che ci sei riuscito anche tu! Ma che bravo";
 			if(lose)
-				return "AHAHAHAHAHA NABBO! proprio non ce la fai!!!";
+				return "AHAHAHAHAHA! proprio non ce la fai!!!";
 		}
-		return null;
+		else {
+			if (win)
+				return "\t Congratulation! \nYou have bested me this time!";
+			if(lose)
+				return "\t Retry! \nNext time your brain will work better, maybe";
+		}
+	return null;
 	}
 	
 	public Support[] getTrack(){

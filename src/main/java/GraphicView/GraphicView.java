@@ -138,10 +138,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 					b=new TargetButton(i++,"Target",board[r][c] );
 					b.addActionListener(this.cont);
 					this.buttonGrid.add(b);
-					if(((TargetButton)b).getWin()){
-						JOptionPane.showMessageDialog(this, "Contratulations.\n You have bested me this time");
-						
-					}
+					
 					
 				}
 				
@@ -168,6 +165,10 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		this.optionGrid.revalidate();
 		this.buttonGrid.repaint();
 		this.optionGrid.revalidate();
+		if(this.model.getWin()){
+			JOptionPane.showMessageDialog(this, "Contratulations.\n You have bested me this time");
+			
+		}
 	}
 
 	public Controller getController() {

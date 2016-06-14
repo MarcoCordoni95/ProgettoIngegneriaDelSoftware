@@ -9,8 +9,5 @@ public class TargetButton extends ButtonStrategy{
 		super(i,c,cs);
 	}
 	
-	public boolean getWin() {
-		
-		return ((TargetCell)this.cell).iWon();
-	}
+	
 }

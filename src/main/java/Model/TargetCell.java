@@ -10,7 +10,5 @@ public class TargetCell extends CellStrategy{
 		this.laser=laser;
 		laser.setWin();
 	}
-	public boolean iWon(){		return this.laser.getWin();
-		
-	}
+	
 }

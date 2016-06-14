@@ -43,7 +43,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		
 		this.model=m;
 		
-	
+		this.choice=new JComboBox<>(this.model.getDifficulties());
 		
 		
 		this.buttonGrid=new JPanel(new GridLayout(5, 5));
@@ -76,9 +76,6 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		
 		
 		JPanel option=new JPanel(new FlowLayout());
-		String[] s={"salumini","beretta","finiscono","in fretta"};
-		this.choice=new JComboBox<String>(s);
-			
 		
 		
 		
@@ -184,7 +181,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		this.buttonGrid.repaint();
 		this.optionGrid.revalidate();
 		if(this.model.getWin()){
-			JOptionPane.showMessageDialog(this, "Contratulations.\n You have bested me this time");
+			JOptionPane.showMessageDialog(this, "Congratulations.\n You have bested me this time");
 			this.model.setNewBoard();
 			
 		}

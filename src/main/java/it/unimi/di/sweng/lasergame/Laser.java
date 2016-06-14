@@ -104,7 +104,6 @@ public class Laser {
 				}//END SWITCH
 			}//END IF
 		}//END WHILE 
-		System.out.println("----");
 		if(x<0 || x>4 || y>4 || y<0){
 			switch(this.direction){	//qui ripristino la coordinata che va fuori
 				case 1: x++; break; 

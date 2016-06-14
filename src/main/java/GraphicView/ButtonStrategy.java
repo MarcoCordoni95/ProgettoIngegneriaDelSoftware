@@ -11,7 +11,7 @@ public abstract class ButtonStrategy extends JButton{
 	boolean flgImg=true;
 	
 	public ButtonStrategy(int i,String c,CellStrategy cs){
-		super(c+"");
+		super("");
 		this.numb=i;
 		this.whoamI=c;
 		this.setName(""+i);

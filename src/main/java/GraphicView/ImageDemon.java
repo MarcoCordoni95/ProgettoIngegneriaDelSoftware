@@ -62,7 +62,6 @@ public class ImageDemon {
 		ImgDem.changeColor("rainbow");
 		return ImgDem;
 	}
-	
 		
 	public void drawMirror(JButton b, int direction){
 		

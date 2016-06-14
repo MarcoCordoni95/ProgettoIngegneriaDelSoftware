@@ -3,13 +3,13 @@ package Model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
-
 import javax.swing.JOptionPane;
-
 import GraphicView.GraphicView;
 import it.unimi.di.sweng.lasergame.Direction;
 import it.unimi.di.sweng.lasergame.Laser;
 import it.unimi.di.sweng.lasergame.Laser.Support;
+import it.unimi.di.sweng.lasergame.ShareScore;
+
 
 public class Model extends Observable {
 	private Laser laser;
@@ -17,6 +17,7 @@ public class Model extends Observable {
 	private int difficulty, score;
 	private CellStrategy[][] board=new CellStrategy[5][5];
 	private int count;		//contatore delle mosse
+	private String [] difficulties={"Easy", "Normal", "Hard", "Pierlauro!"};
 	
 	Support[] colorTrack;
 
@@ -30,6 +31,9 @@ public class Model extends Observable {
 		this.score=this.laser.getScore();	
 	} 
 	
+	public String[] getDifficulties(){
+		return this.difficulties;
+	}
 	public void setNewBoard(){
 		for (int r=0; r<5; r++)
 			for (int c=0; c<5; c++)
@@ -84,6 +88,8 @@ public class Model extends Observable {
 			this.colorTrack=laser.newGetPercorso(board);
 			this.win=this.laser.getWin();
 			if(this.win){//controllo se ho vinto
+				ShareScore sc=newShareScore (this.score);
+				sc.share();//scrittura su file
 				JOptionPane.showMessageDialog(null, "Contratulations.\n You have bested me this time");
 				this.setNewBoard();
 				

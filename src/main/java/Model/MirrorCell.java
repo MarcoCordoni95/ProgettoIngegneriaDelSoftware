@@ -21,11 +21,6 @@ public class MirrorCell extends CellStrategy {
 				this.orientation=1;
 			else return;
 	}
-	
-	
-	
-
-	 
 	/*
 	 * QUANDO VERRANNO SPOSTATI GLI SPECCHI C'E' BISOGNO DI UN METODO CHE RESETTA IL LASER A FALSE.
  	 * 

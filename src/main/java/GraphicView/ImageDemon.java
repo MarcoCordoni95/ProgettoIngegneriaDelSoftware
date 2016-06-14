@@ -65,14 +65,7 @@ public class ImageDemon {
 	    		int[] points = getDrawCoords(Direction.flip(x.getFromDir()),b);
 	    		g2.setColor(L_COLOR);
 	    		g2.drawLine(points[0], points[1], points[2], points[3]);
-/*
-	    		for(int k:points)
-	    			System.out.print(Integer.toString(k)+" ");
-	    		System.out.println();*/
 	    		points=getDrawCoords(x.getDir(),b);
-	    	/*	for(int k:points)
-	    			System.out.print(Integer.toString(k)+" ");	    
-	    		System.out.println();*/
 	    		g2.drawLine(points[0], points[1], points[2], points[3]);
 	    	}
 		}

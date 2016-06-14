@@ -31,6 +31,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 
 	public GraphicView(Model m){
 		super("Laser Game");
+		this.setLookandFeel();
 		Container co=this.getContentPane();
 		co.setLayout(new BorderLayout());
 		
@@ -84,7 +85,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 	}
 
 	public void start(){
-		//this.setLookandFeel();
+		
 		this.setSize(500, 500);
 		this.setVisible(true);
 		
@@ -170,6 +171,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		this.buttonGrid.repaint();
 		this.optionGrid.revalidate();
 		if(this.model.getWin()){
+			JOptionPane.showMessageDialog(this, "Contratulations.\n You have bested me this time");
 			this.model.setNewBoard();
 			
 		}

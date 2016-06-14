@@ -49,8 +49,8 @@ public class Controller implements ActionListener {
 				move(x, y, x1, y1);		
 
 			if (board[x1][y1] instanceof EmptyCell){		//controllo che il sencondo click è su una empty cell in modo tale da non sovrascrivere specchi
-				move(x, y, x1, y1);				
-				c=0;										
+				c=0;
+				move(x, y, x1, y1);														
 			}
 			c=0;		//qualcosa non quadra, resettati i click
 		}	
@@ -60,5 +60,4 @@ public class Controller implements ActionListener {
 	public void move(int x, int y, int x1, int y1){
 			model.updateModel(x, y, x1, y1);
 		}
-	
 }

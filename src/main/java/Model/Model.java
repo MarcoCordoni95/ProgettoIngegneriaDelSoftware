@@ -85,7 +85,7 @@ public class Model extends Observable {
 			this.win=this.laser.getWin();
 			if(this.win){//controllo se ho vinto
 				JOptionPane.showMessageDialog(null, "Contratulations.\n You have bested me this time");
-				this.setNewBoard();
+				
 				
 			}
 			this.setChanged();

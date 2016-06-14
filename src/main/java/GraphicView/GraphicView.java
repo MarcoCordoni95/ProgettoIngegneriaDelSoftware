@@ -157,7 +157,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-	
+		
 		
 		this.buttonGrid.removeAll();
 		this.optionGrid.removeAll();
@@ -167,7 +167,10 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		this.optionGrid.revalidate();
 		this.buttonGrid.repaint();
 		this.optionGrid.revalidate();
-		
+		if(this.model.getWin()){
+			this.model.setNewBoard();
+			
+		}
 	}
 
 	public Controller getController() {

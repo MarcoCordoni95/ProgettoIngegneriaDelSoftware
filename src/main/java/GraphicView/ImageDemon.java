@@ -31,6 +31,7 @@ public class ImageDemon {
 	
 	private final String STANDARDMIRROR_R = "./src/Res/mirrorR.png/"; 
 	private final String STANDARDMIRROR_L = "./src/Res/mirrorL.png/"; 
+	private final String FINISH = "./src/Res/finish.png/"; 
 
 	
 	
@@ -38,6 +39,7 @@ public class ImageDemon {
 	Image laserY;
 	Image mirrorR;
 	Image mirrorL;
+	Image finish;
 	
 	public static ImageDemon ImgDem;
 	final Color L_COLOR = Color.red; 
@@ -48,6 +50,7 @@ public class ImageDemon {
 			laserY = ImageIO.read(new File(REDLASERY));
 			mirrorR = ImageIO.read(new File(STANDARDMIRROR_R));
 			mirrorL = ImageIO.read(new File(STANDARDMIRROR_L));
+			finish = ImageIO.read(new File(FINISH));
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -128,6 +131,11 @@ public class ImageDemon {
 		}
 	}
 	
+	public void drawTarget(ButtonStrategy b, Graphics2D g2){
+		int w=b.getWidth();
+		int h=b.getWidth();
+        g2.drawImage(finish,0,0,w,h,null);
+	}
 	public int[] getDrawCoords(int dir, ButtonStrategy b,boolean isImage){
 		int[] ret={0,0,0,0}; //x1 y1 x2 y2
 		int w=b.getWidth();

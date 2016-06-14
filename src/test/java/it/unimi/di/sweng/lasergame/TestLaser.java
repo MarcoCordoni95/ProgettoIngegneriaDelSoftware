@@ -37,7 +37,7 @@ public class TestLaser {
 	@Test
 	public void TestSetWin(){
 		Laser laser1 = new Laser();
-		laser1.setWin();
+		laser1.setWin(true);
 		assertEquals(laser1.getWin(),true);
 	}
 	

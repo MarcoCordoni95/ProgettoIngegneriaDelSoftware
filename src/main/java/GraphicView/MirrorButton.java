@@ -18,9 +18,9 @@ public class MirrorButton extends ButtonStrategy {
 	
 	public MirrorButton change() {
 		if(this.getWhoamI().equals("/"))
-			return  new MirrorButton(this.getNumb(),"\\",temp);
+			return  new MirrorButton(this.getNumb(),"\\",cell);
 		if(this.getWhoamI().equals("\\"))
-			return  new MirrorButton(this.getNumb(),"/",temp);
+			return  new MirrorButton(this.getNumb(),"/",cell);
 		return null;
 		
 		

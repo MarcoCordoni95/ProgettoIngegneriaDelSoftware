@@ -10,7 +10,7 @@ import Model.TargetCell;
 public class Laser {
 	private int direction;
 	private int fromDirection;
-	private boolean win;
+	private boolean win=false;
 
 	//
 	private int x = 4, y = 0;
@@ -84,6 +84,7 @@ public class Laser {
 			this.fromDirection=lastDir;
 			board[x][y].setLaser(Lclone());		
 			lastDir=this.direction;
+			this.score++;
 			if(!win){	//se hai vinto di sicuro non ti metti a modificare cose, quindi fermati dopo aver aggiunto l'ultimo elemento
 			switch (this.direction) {	//viene settata la posisione successiva 
 				case Direction.UP:
@@ -116,6 +117,7 @@ public class Laser {
 		Support [] p={null};
 		this.score=journey.size();
 		x=4; y=0;	//ripristino le coordinate iniziali per fargli rifare il ciclo
+		this.score=0;
 		return journey.toArray(p); 	//ritorno la lista di celle percorse con in fondo un muro o un target
 	}
 	

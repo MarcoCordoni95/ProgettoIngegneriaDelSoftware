@@ -14,38 +14,32 @@ import it.unimi.di.sweng.lasergame.ShareScore;
 public class Model extends Observable {
 	private Laser laser;
 	private boolean win=false, lose=false;
-	private int difficulty, score;
+	private int difficulty, score, count;
 	private CellStrategy[][] board=new CellStrategy[5][5];
-	private int count;		//contatore delle mosse
 	private String [] difficulties={"Easy", "Normal", "Hard", "Pierlauro!"};
 	
 	Support[] colorTrack;
 
-	
+
 	public Model (Laser laser){
-		RandomCells random = new RandomCells();
-		this.board= random.filler(board);
-		this.count=0;
 		this.laser=laser;
-		this.laser.newGetPercorso(this.board);
-		this.score=this.laser.getScore();	
-		this.win=this.laser.getWin();
+		this.setNewBoard();
 	} 
 	
-	public String[] getDifficulties(){
-		return this.difficulties;
-	}
 	public void setNewBoard(){
 		for (int r=0; r<5; r++)
 			for (int c=0; c<5; c++)
 				this.board[r][c]=null;
 		RandomCells random = new RandomCells();
 		this.board= random.filler(board);
-		
-		this.win=false;
-		this.laser.setWin(false);
 		this.count=0;
-	
+		this.laser.newGetPercorso(this.board);
+		this.score=this.laser.getScore();	
+		this.win=this.laser.getWin();
+		this.updateView(); //mi serve per avvisare la view che è stato creato tutto e visualizzare la win se per random va.
+	}
+	public String[] getDifficulties(){
+		return this.difficulties;
 	}
 	public void setDifficulty(int i){
 		this.difficulty=i;
@@ -88,8 +82,7 @@ public class Model extends Observable {
 				sc.share();//scrittura su file
 			}
 			this.score=this.laser.getScore();
-			this.setChanged();
-			this.notifyObservers(); 	//passo alla view tutto quello che contiene il model , gli passo l'oggetto osservato, ma non sono sicura di quello che fa () o (this), sulle api non è specificato 
+			this.updateView();//passo alla view tutto quello che contiene il model , gli passo l'oggetto osservato, ma non sono sicura di quello che fa () o (this), sulle api non è specificato 
 	}
 	
 //FEATURE SPECIALE su richiesta di pierlauro
@@ -109,6 +102,12 @@ public class Model extends Observable {
 	return null;
 	}
 	
+	private void updateView(){
+		this.setChanged();
+		this.notifyObservers(); 	
+	}
+	
+//---------	
 	public Support[] getTrack(){
 		return this.colorTrack;
 		

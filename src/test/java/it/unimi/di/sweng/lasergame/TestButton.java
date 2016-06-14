@@ -12,14 +12,14 @@ public class TestButton {
 	
 	@Test
 	public void TestEmptyButton(){
-		EmptyButton eb = new EmptyButton(1);
+		EmptyButton eb = new EmptyButton(1,null);
 		assertEquals(eb.getNumb(),1);
 		assertEquals(eb.getWhoamI(),"");
 	}
 	
 	@Test
 	public void TestMirrorButton(){
-		MirrorButton mb = new MirrorButton(2,"/");
+		MirrorButton mb = new MirrorButton(2,"/",null);
 		assertEquals(mb.getNumb(),2);
 		assertEquals(mb.getWhoamI(),"/");
 		mb=mb.change();
@@ -30,7 +30,7 @@ public class TestButton {
 	
 	@Test
 	public void TestTargetButton(){
-		TargetButton tb = new TargetButton(3,"t");
+		TargetButton tb = new TargetButton(3,"t",null);
 		assertEquals(tb.getNumb(),3);
 		assertEquals(tb.getWhoamI(),"t");
 	}

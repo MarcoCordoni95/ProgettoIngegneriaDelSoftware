@@ -8,4 +8,11 @@ public class Direction {
 	public static final int LEFT=4;
 	
 	private Direction(){}
+	
+	public static int flip(int i){
+		if(i%2==0)
+			return --i;
+		else
+			return ++i;
+	}
 }

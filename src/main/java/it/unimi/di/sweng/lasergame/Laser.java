@@ -31,6 +31,7 @@ public class Laser {
 	
 	public Laser(){
 		this.direction = 1; //UP
+		this.fromDirection=Direction.UP;
 		this.win= false;
 	}
 
@@ -45,7 +46,9 @@ public class Laser {
 	public int getDir() {
 		return direction;
 	}
-
+	public int getFromDir(){
+		return fromDirection;
+	}
 	public void setDir(int i) {
 		this.direction = i;
 	}
@@ -58,6 +61,13 @@ public class Laser {
 		return this.win;
 	}
 
+	private Laser Lclone(){
+		Laser ret = new Laser();
+		ret.setDir(direction);
+		ret.fromDirection=fromDirection;
+		return ret;
+	}
+	
 	private void setLaser(CellStrategy c) {
 		if (!c.isSetLaserList()) {
 			c.setLaser(this);
@@ -69,23 +79,25 @@ public class Laser {
 		ArrayList<Support> journey=new ArrayList <Support>();
 		int lastDir=this.direction;
 		while (x >=0 && x<=4 && y>=0 && y<=4 && !win){
+			System.out.println(y+"-"+x);
+			System.out.println(board[x][y].getLaser().size()+" DP ");
 			journey.add(new Support(x, y));
 			board[x][y].action(this);
 			this.fromDirection=lastDir;
-			board[x][y].setLaser(this);			
+			board[x][y].setLaser(Lclone());		
 			lastDir=this.direction;
 			if(!win){	//se hai vinto di sicuro non ti metti a modificare cose, quindi fermati dopo aver aggiunto l'ultimo elemento
 			switch (this.direction) {	//viene settata la posisione successiva 
-				case 1:
+				case Direction.UP:
 					x--; // la x di laser va verso l'alto
 					break;
-				case 2:
+				case Direction.DOWN:
 					x++; // la x di laser va verso il basso
 					break;
-				case 3:
+				case Direction.RIGHT:
 					y++; // la y di laser va verso destra
 					break;
-				case 4:
+				case Direction.LEFT:
 					y--; // la y di laser va verso sinistra					
 					break;
 				default:
@@ -93,6 +105,7 @@ public class Laser {
 				}//END SWITCH
 			}//END IF
 		}//END WHILE 
+		System.out.println("----");
 		if(x<0 || x>4 || y>4 || y<0){
 			switch(this.direction){	//qui ripristino la coordinata che va fuori
 				case 1: x++; break; 

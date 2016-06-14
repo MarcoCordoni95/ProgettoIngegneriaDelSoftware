@@ -32,13 +32,7 @@ public class MirrorButton extends ButtonStrategy {
 		Graphics2D g2 = (Graphics2D)g.create();
         ImageDemon id = ImageDemon.getImageDemon();
         id.drawLaserOnly(this, g2);
-        g2.setColor(Color.black);
-        if( getWhoamI().equals("/")){
-	       g2.drawLine(getWidth(), 0, 0, getHeight());	        
-        }
-        else{
- 	       g2.drawLine(0, 0, getWidth(), getHeight());	      
-        }
+        id.drawMirror(this, g2);
         g2.dispose();
         
 	}	

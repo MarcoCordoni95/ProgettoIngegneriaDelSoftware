@@ -79,8 +79,6 @@ public class Laser {
 		ArrayList<Support> journey=new ArrayList <Support>();
 		int lastDir=this.direction;
 		while (x >=0 && x<=4 && y>=0 && y<=4 && !win){
-			System.out.println(y+"-"+x);
-			System.out.println(board[x][y].getLaser().size()+" DP ");
 			journey.add(new Support(x, y));
 			board[x][y].action(this);
 			this.fromDirection=lastDir;

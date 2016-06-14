@@ -82,9 +82,7 @@ public class Laser {
 			journey.add(new Support(x, y));
 			board[x][y].action(this);
 			this.fromDirection=lastDir;
-			board[x][y].setLaser(Lclone());
-		
-			System.out.println(this.fromDirection+"-"+this.direction);
+			board[x][y].setLaser(Lclone());		
 			lastDir=this.direction;
 			if(!win){	//se hai vinto di sicuro non ti metti a modificare cose, quindi fermati dopo aver aggiunto l'ultimo elemento
 			switch (this.direction) {	//viene settata la posisione successiva 

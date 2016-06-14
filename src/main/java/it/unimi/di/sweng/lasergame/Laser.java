@@ -3,9 +3,7 @@ package it.unimi.di.sweng.lasergame;
 import java.util.ArrayList;
 
 import Model.CellStrategy;
-import Model.EmptyCell;
-import Model.MirrorCell;
-import Model.TargetCell;
+
 
 public class Laser {
 	private int direction;

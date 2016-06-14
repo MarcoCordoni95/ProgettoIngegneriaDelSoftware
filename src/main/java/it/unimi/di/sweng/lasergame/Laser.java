@@ -53,8 +53,8 @@ public class Laser {
 		this.direction = i;
 	}
 
-	public void setWin() {
-		this.win = true;
+	public void setWin(boolean b) {
+		this.win = b;
 	}
 
 	public boolean getWin() {

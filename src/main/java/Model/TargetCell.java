@@ -8,7 +8,7 @@ public class TargetCell extends CellStrategy{
 	private Laser laser;
 	public void action (Laser laser) {
 		this.laser=laser;
-		laser.setWin();
+		laser.setWin(true);
 	}
 	
 }

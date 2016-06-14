@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
 
+import javax.swing.JOptionPane;
+
+import GraphicView.GraphicView;
 import it.unimi.di.sweng.lasergame.Direction;
 import it.unimi.di.sweng.lasergame.Laser;
 import it.unimi.di.sweng.lasergame.Laser.Support;
@@ -27,10 +30,16 @@ public class Model extends Observable {
 		this.score=this.laser.getScore();	
 	} 
 	
-	public void setEmptyBoard(){
+	public void setNewBoard(){
 		for (int r=0; r<5; r++)
 			for (int c=0; c<5; c++)
 				this.board[r][c]=null;
+		RandomCells random = new RandomCells();
+		this.board= random.filler(board);
+		
+		this.win=false;
+		this.laser.setWin(false);
+		this.count=0;
 	}
 	public void setDifficulty(int i){
 		this.difficulty=i;
@@ -74,6 +83,11 @@ public class Model extends Observable {
 			this.clearLaser();
 			this.colorTrack=laser.newGetPercorso(board);
 			this.win=this.laser.getWin();
+			if(this.win){//controllo se ho vinto
+				JOptionPane.showMessageDialog(null, "Contratulations.\n You have bested me this time");
+				this.setNewBoard();
+				
+			}
 			this.setChanged();
 			this.notifyObservers(); 	//passo alla view tutto quello che contiene il model , gli passo l'oggetto osservato, ma non sono sicura di quello che fa () o (this), sulle api non è specificato 
 	}

@@ -18,6 +18,7 @@ public class Model extends Observable {
 									};
 	private int count;		//contatore delle mosse
 	Support[] colorTrack;
+	private int score;
 	
 	
 	public Model (Laser laser){
@@ -25,7 +26,8 @@ public class Model extends Observable {
 		board= random.filler(board);
 		count=0;
 		this.laser=laser;
-		laser.newGetPercorso(board);
+		this.laser.newGetPercorso(this.board);
+		this.score=this.laser.getScore();
 		
 	} 
 	

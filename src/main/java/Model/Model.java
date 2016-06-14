@@ -83,7 +83,7 @@ public class Model extends Observable {
 			this.clearLaser();
 			this.colorTrack=laser.newGetPercorso(board);
 			this.win=this.laser.getWin();
-			
+			this.score=this.laser.getScore();
 			this.setChanged();
 			this.notifyObservers(); 	//passo alla view tutto quello che contiene il model , gli passo l'oggetto osservato, ma non sono sicura di quello che fa () o (this), sulle api non è specificato 
 	}

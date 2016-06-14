@@ -27,7 +27,6 @@ public class MirrorButton extends ButtonStrategy {
 	
     @Override
     protected void paintComponent(Graphics g){
-    	 System.out.println(this.getWhoamI());
         super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g.create();
         ImageDemon id = ImageDemon.getImageDemon();

@@ -13,7 +13,6 @@ public class MirrorButton extends ButtonStrategy {
 	
 	public MirrorButton(int i,String c,CellStrategy cs){//il numero passato sarà un identificatore univoco all'interno della griglia
 		super(i,c,cs);
-		
 	}
 	
 	public MirrorButton change() {
@@ -28,6 +27,7 @@ public class MirrorButton extends ButtonStrategy {
 	
     @Override
     protected void paintComponent(Graphics g){
+    	 System.out.println(this.getWhoamI());
         super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g.create();
         ImageDemon id = ImageDemon.getImageDemon();

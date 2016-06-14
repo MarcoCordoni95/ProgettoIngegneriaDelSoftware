@@ -16,10 +16,9 @@ import Model.CellStrategy;
 import Model.EmptyCell;
 import Model.MirrorCell;
 import Model.Model;
-import it.unimi.di.sweng.lasergame.Laser;
+
 import Model.TargetCell;
-import it.unimi.di.sweng.lasergame.ScoreDisplay;
-import it.unimi.di.sweng.lasergame.ShareScore;
+
 import it.unimi.di.sweng.lasergame.ViewInterface;
 
 public class GraphicView extends JFrame implements ViewInterface, Observer {
@@ -169,14 +168,14 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 		this.optionGrid.revalidate();
 		this.buttonGrid.repaint();
 		this.optionGrid.revalidate();
-		
-		String s=this.model.isPierlauro();
-		if (s!=null) {
+
+		String s = this.model.isPierlauro();
+		if (s != null) {
 			JOptionPane.showMessageDialog(this, s);
 			this.model.setNewBoard();
 
 		}
-		
+
 	}
 
 	public Controller getController() {

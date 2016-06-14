@@ -9,6 +9,7 @@ import Model.TargetCell;
 
 public class Laser {
 	private int direction;
+	private int fromDirection;
 	private boolean win;
 
 	//
@@ -66,11 +67,13 @@ public class Laser {
 	
 		public Support[] newGetPercorso(CellStrategy[][] board) {
 		ArrayList<Support> journey=new ArrayList <Support>();
+		int lastDir=this.direction;
 		while (x >=0 && x<=4 && y>=0 && y<=4 && !win){
 			journey.add(new Support(x, y));
 			board[x][y].action(this);
-			board[x][y].setLaser(this);
-			
+			this.fromDirection=lastDir;
+			board[x][y].setLaser(this);			
+			lastDir=this.direction;
 			if(!win){	//se hai vinto di sicuro non ti metti a modificare cose, quindi fermati dopo aver aggiunto l'ultimo elemento
 			switch (this.direction) {	//viene settata la posisione successiva 
 				case 1:

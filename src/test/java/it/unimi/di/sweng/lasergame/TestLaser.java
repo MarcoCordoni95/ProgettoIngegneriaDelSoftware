@@ -5,7 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import Model.CellStrategy;
+import Model.EmptyCell;
+import Model.MirrorCell;
 import Model.RandomCells;
+import Model.TargetCell;
+import it.unimi.di.sweng.lasergame.Laser.Support;
 
 public class TestLaser {
 
@@ -41,26 +45,19 @@ public class TestLaser {
 	public void TestNewGetPercorso(){
 		Laser laser1 = new Laser();
 		RandomCells rand=new RandomCells();
+		String percorso="";
 		
-		CellStrategy[][] board={{null,null,null,null,null},
-								{null,null,null,null,null},
-								{null,null,null,null,null},
-								{null,null,null,null,null},
-								{null,null,null,null,null}};
+		CellStrategy[][] board={{new EmptyCell(),new EmptyCell(),new EmptyCell(),new EmptyCell(),new EmptyCell()}, // board scelto da me per poter controllare il percorso
+								{new MirrorCell(0),new EmptyCell(),new EmptyCell(),new EmptyCell(),new MirrorCell(1)},
+								{new EmptyCell(),new EmptyCell(),new TargetCell(),new EmptyCell(),new EmptyCell()},
+								{new EmptyCell(),new EmptyCell(),new EmptyCell(),new EmptyCell(),new EmptyCell()},
+								{new EmptyCell(),new EmptyCell(),new MirrorCell(1),new EmptyCell(),new MirrorCell(0)}};
       
-       board=rand.filler(board);       
-       CellStrategy[] p =laser1.newGetPercorso(board);
-       for(CellStrategy u : p)
-    	   System.out.println( u );
+       Support[] p =laser1.newGetPercorso(board);
        
-       System.out.println("");
-       System.out.println("");
-       
-       for(int i=0; i<5; i++){
-           for(int j=0; j<5; j++)
-        	   System.out.print(board[i][j]);
-           System.out.println("");
-       }
-
+       for(Support u : p)
+    	   percorso=percorso+ "[" + u.row + "," + u.column + "] " ;
+    
+       assertEquals("[4,0] [3,0] [2,0] [1,0] [1,1] [1,2] [1,3] [1,4] [2,4] [3,4] [4,4] [4,3] [4,2] [3,2] [2,2] ", percorso);
 	}
 }

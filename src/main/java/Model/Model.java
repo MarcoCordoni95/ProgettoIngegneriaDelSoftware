@@ -25,6 +25,7 @@ public class Model extends Observable {
 		board= random.filler(board);
 		count=0;
 		this.laser=laser;
+		laser.newGetPercorso(board);
 		
 	} 
 	

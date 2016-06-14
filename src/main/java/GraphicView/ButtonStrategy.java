@@ -8,7 +8,7 @@ public abstract class ButtonStrategy extends JButton{
 	private String whoamI;
 	private int numb;
 	CellStrategy temp;
-	boolean flgImg=false;
+	boolean flgImg=true;
 	public ButtonStrategy(int i,String c,CellStrategy cs){
 		super(c+"");
 		this.numb=i;

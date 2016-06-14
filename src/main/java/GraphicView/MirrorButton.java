@@ -29,11 +29,10 @@ public class MirrorButton extends ButtonStrategy {
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-
-    	Graphics2D g2 = (Graphics2D)g.create();
-    	g2.setColor(Color.BLACK);
-
-    	g2.drawString(getWhoamI(),10,10);
+		Graphics2D g2 = (Graphics2D)g.create();
+        ImageDemon id = ImageDemon.getImageDemon();
+        id.drawLaserOnly(this, g2);
+        g2.setColor(Color.black);
         if( getWhoamI().equals("/")){
 	       g2.drawLine(getWidth(), 0, 0, getHeight());	        
         }

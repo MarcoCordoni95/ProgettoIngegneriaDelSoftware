@@ -8,7 +8,7 @@ public abstract class ButtonStrategy extends JButton{
 	private String whoamI;
 	private int numb;
 	CellStrategy temp;
-	boolean images=false;
+	boolean flgImg=false;
 	public ButtonStrategy(int i,String c,CellStrategy cs){
 		super(c+"");
 		this.numb=i;
@@ -21,6 +21,12 @@ public abstract class ButtonStrategy extends JButton{
 	}
 	public int getNumb(){
 		return this.numb;
+	}
+	public CellStrategy getCell(){
+		return temp;
+	}
+	public boolean getDrawOption(){
+		return flgImg;
 	}
 	
 	

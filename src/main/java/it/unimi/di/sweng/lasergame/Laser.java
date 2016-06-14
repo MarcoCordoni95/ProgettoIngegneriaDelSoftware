@@ -31,6 +31,7 @@ public class Laser {
 	
 	public Laser(){
 		this.direction = 1; //UP
+		this.fromDirection=Direction.UP;
 		this.win= false;
 	}
 
@@ -45,7 +46,9 @@ public class Laser {
 	public int getDir() {
 		return direction;
 	}
-
+	public int getFromDir(){
+		return fromDirection;
+	}
 	public void setDir(int i) {
 		this.direction = i;
 	}
@@ -58,6 +61,13 @@ public class Laser {
 		return this.win;
 	}
 
+	private Laser Lclone(){
+		Laser ret = new Laser();
+		ret.setDir(direction);
+		ret.fromDirection=fromDirection;
+		return ret;
+	}
+	
 	private void setLaser(CellStrategy c) {
 		if (!c.isSetLaserList()) {
 			c.setLaser(this);
@@ -72,7 +82,9 @@ public class Laser {
 			journey.add(new Support(x, y));
 			board[x][y].action(this);
 			this.fromDirection=lastDir;
-			board[x][y].setLaser(this);			
+			board[x][y].setLaser(Lclone());
+		
+			System.out.println(this.fromDirection+"-"+this.direction);
 			lastDir=this.direction;
 			if(!win){	//se hai vinto di sicuro non ti metti a modificare cose, quindi fermati dopo aver aggiunto l'ultimo elemento
 			switch (this.direction) {	//viene settata la posisione successiva 

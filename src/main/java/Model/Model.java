@@ -30,6 +30,9 @@ public class Model extends Observable {
 	public int getCount(){
 		return this.count;
 	}
+	public void setBoard(CellStrategy[][] c ){
+		board=c;
+	}
 	
 	public CellStrategy[][] getBoard(){
 		return this.board;

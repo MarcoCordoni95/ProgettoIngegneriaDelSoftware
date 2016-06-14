@@ -169,8 +169,10 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 		this.optionGrid.revalidate();
 		this.buttonGrid.repaint();
 		this.optionGrid.revalidate();
-		if (this.model.isPierlauro()!=null) {
-			JOptionPane.showMessageDialog(this, this.model.isPierlauro());
+		
+		String s=this.model.isPierlauro();
+		if (s!=null) {
+			JOptionPane.showMessageDialog(this, s);
 			this.model.setNewBoard();
 
 		}

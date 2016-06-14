@@ -33,6 +33,7 @@ public class Model extends Observable {
 		RandomCells random = new RandomCells();
 		this.board= random.filler(board);
 		this.count=0;
+		this.laser.setDir(Direction.UP);
 		this.laser.newGetPercorso(this.board);
 		this.score=this.laser.getScore();	
 		this.win=this.laser.getWin();
@@ -60,17 +61,17 @@ public class Model extends Observable {
 	
 	
 	public void updateModel (int x, int y, int x1, int y1){	//i parametri sono le coordinate della posizione
-			if (x==x1 && y==y1)
+			if (x==x1 && y==y1 && (board[x][y] instanceof MirrorCell))
 				((MirrorCell)board[x][y]).setOrientation(); //casto l'oggetto perchè a questo punto sono mooooolto sicura che l'oggetto è di tipo mirrorCEll, nel controller c'è il controllo apposta
 			else{
-				board[x1][y1] = board[x][y];
-				board[x][y] = new EmptyCell();		//spostato banalmente l'oggetto
+				this.board[x1][y1] = this.board[x][y];
+				this.board[x][y] = new EmptyCell();		//spostato banalmente l'oggetto
 			}
 			count++;
 			if (this.difficulty>0){//difficoltà avrà dei valori, da 1 a 5 per ora, 5 è lo score verrà 
 				this.score*=difficulty;
 				if(this.count > (10-difficulty)){	//10 è un numero pensato un po' a caso
-					lose=true; 
+					this.lose=true; 
 				}
 			}
 			
@@ -89,23 +90,23 @@ public class Model extends Observable {
 //FEATURE SPECIALE su richiesta di pierlauro
 	public String isPierlauro(){
 		if(difficulty==7){
-			if (win){
+			if (this.win){
 				this.laser.setWin(false);
 				return "Vedo che ci sei riuscito anche tu! Ma che bravo";
 			}
-			if(lose){
+			if(this.lose){
 				this.lose=false;
 				return "AHAHAHAHAHA! proprio non ce la fai!!!";
 			}
 		}
 		else {
-			if (win){
+			if (this.win){
 				this.laser.setWin(false);
-				return "\t Congratulation! \nYou have bested me this time!";
+				return "Congratulation! \nYou have bested me this time!\n\n If you liked the game,\n please,\n let the developpers pass.";
 			}
-			if(lose){
+			if(this.lose){
 				this.lose=false;
-				return "\t Retry! \nNext time your brain will work better, maybe";
+				return "Try Again, if you dare... \nNext time your brain will work better, maybe...";
 			}
 		}
 	return null;

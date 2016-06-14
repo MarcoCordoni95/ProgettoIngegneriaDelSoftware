@@ -24,6 +24,17 @@ public class Controller implements ActionListener {
 		view=v;
 		board=m.getBoard();
 	}
+	
+	public void setDiff(String s){
+		if (s.equals("Easy"))
+				this.model.setDifficulty(1);
+		if (s.equals("Normal"))
+				this.model.setDifficulty(3);
+		if (s.equals("Hard"))
+				this.model.setDifficulty(5);
+		if (s.equals("Pierlauro!"))
+				this.model.setDifficulty(7);			
+	}
 
 
 	@Override

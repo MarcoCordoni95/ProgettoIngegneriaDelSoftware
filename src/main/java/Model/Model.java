@@ -68,7 +68,6 @@ public class Model extends Observable {
 	}
 	
 	
-	
 	public void updateModel (int x, int y, int x1, int y1){	//i parametri sono le coordinate della posizione
 			if (x==x1 && y==y1)
 				((MirrorCell)board[x][y]).setOrientation(); //casto l'oggetto perchè a questo punto sono mooooolto sicura che l'oggetto è di tipo mirrorCEll, nel controller c'è il controllo apposta
@@ -96,7 +95,16 @@ public class Model extends Observable {
 			this.notifyObservers(); 	//passo alla view tutto quello che contiene il model , gli passo l'oggetto osservato, ma non sono sicura di quello che fa () o (this), sulle api non è specificato 
 	}
 	
-	
+//FEATURE SPECIALE su richiesta di pierlauro
+	public String isPierlauro(){
+		if(difficulty==7){
+			if (win)
+				return "Vedo che ci sei riuscito anche tu! Ma che bravo";
+			if(lose)
+				return "AHAHAHAHAHA NABBO! proprio non ce la fai!!!";
+		}
+		return null;
+	}
 	
 	public Support[] getTrack(){
 		return this.colorTrack;

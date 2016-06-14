@@ -80,24 +80,33 @@ public class Model extends Observable {
 			if(this.win){//controllo se ho vinto
 				ShareScore sc=new ShareScore (this.score);
 				sc.share();//scrittura su file
-			}
+				}
 			this.score=this.laser.getScore();
 			this.updateView();//passo alla view tutto quello che contiene il model , gli passo l'oggetto osservato, ma non sono sicura di quello che fa () o (this), sulle api non è specificato 
+			
 	}
 	
 //FEATURE SPECIALE su richiesta di pierlauro
 	public String isPierlauro(){
 		if(difficulty==7){
-			if (win)
+			if (win){
+				this.laser.setWin(false);
 				return "Vedo che ci sei riuscito anche tu! Ma che bravo";
-			if(lose)
+			}
+			if(lose){
+				this.lose=false;
 				return "AHAHAHAHAHA! proprio non ce la fai!!!";
+			}
 		}
 		else {
-			if (win)
+			if (win){
+				this.laser.setWin(false);
 				return "\t Congratulation! \nYou have bested me this time!";
-			if(lose)
+			}
+			if(lose){
+				this.lose=false;
 				return "\t Retry! \nNext time your brain will work better, maybe";
+			}
 		}
 	return null;
 	}

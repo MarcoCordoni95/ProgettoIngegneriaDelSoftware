@@ -124,7 +124,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 					b.addActionListener(this.cont);
 					this.buttonGrid.add(b);
 				}
-				if(board[r][c] instanceof MirrorCell){
+				else if(board[r][c] instanceof MirrorCell){
 					int x= ((MirrorCell)board[r][c]).getOrientation();
 					if (x==0)
 						s="/";
@@ -137,7 +137,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 					this.buttonGrid.add(b);
 					
 				}
-				if(board[r][c] instanceof TargetCell){
+				else if(board[r][c] instanceof TargetCell){
 					b=new TargetButton(i++,"target",board[r][c] );
 					b.addActionListener(this.cont);
 					this.buttonGrid.add(b);

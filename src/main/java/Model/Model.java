@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
 
+import it.unimi.di.sweng.lasergame.Direction;
 import it.unimi.di.sweng.lasergame.Laser;
 import it.unimi.di.sweng.lasergame.Laser.Support;
 
@@ -47,6 +48,7 @@ public class Model extends Observable {
 				board[x][y] = new EmptyCell();		//spostato banalmente l'oggetto
 			}
 			count++;
+			this.clearLaser();
 			this.colorTrack=laser.newGetPercorso(board);
 			this.setChanged();
 			this.notifyObservers(); 	//passo alla view tutto quello che contiene il model , gli passo l'oggetto osservato, ma non sono sicura di quello che fa () o (this), sulle api non è specificato 
@@ -62,5 +64,15 @@ public class Model extends Observable {
 			ret.add((ArrayList) Arrays.asList(board));
 		}
 		return ret;
+	}
+	public void clearLaser(){
+		for(int i=0; i<5; i++){
+			for(int j=0; j<5;j++){
+				if(board[i][j].getLaser().size()>0){
+					board[i][j].purgeLaser();
+				}
+			}
+		}
+		laser=new Laser();
 	}
 }

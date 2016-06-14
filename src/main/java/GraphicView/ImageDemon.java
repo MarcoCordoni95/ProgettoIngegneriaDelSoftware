@@ -22,6 +22,14 @@ import it.unimi.di.sweng.lasergame.Direction;
 import it.unimi.di.sweng.lasergame.Laser;
 public class ImageDemon {
 	
+	private final String REDLASERX = "./src/Res/lx.png/"; 
+	private final String REDLASERY = "./src/Res/ly.png/"; 
+	private final String RAINBOWLASERX = "./src/Res/lxRainbow.png/"; 
+	private final String RAINBOWLASERY = "./src/Res/lyRainbow.png/"; 
+	private final String STANDARDMIRROR_R = "./src/Res/mirrorR.png/"; 
+	private final String STANDARDMIRROR_L = "./src/Res/mirrorL.png/"; 
+	
+	
 	Image laserX;
 	Image laserY;
 	Image mirrorR;
@@ -32,10 +40,10 @@ public class ImageDemon {
 	
 	private ImageDemon(){
 		try {
-			laserX = ImageIO.read(new File("./src/Res/lx.png/"));
-			laserY = ImageIO.read(new File("./src/Res/ly.png/"));
-			mirrorR = ImageIO.read(new File("./src/Res/mirrorR.png/"));
-			mirrorL = ImageIO.read(new File("./src/Res/mirrorL.png/"));
+			laserX = ImageIO.read(new File(REDLASERX));
+			laserY = ImageIO.read(new File(REDLASERY));
+			mirrorR = ImageIO.read(new File(STANDARDMIRROR_R));
+			mirrorL = ImageIO.read(new File(STANDARDMIRROR_L));
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -47,6 +55,7 @@ public class ImageDemon {
 		if(ImgDem==null){
 			new ImageDemon();
 		}
+		ImgDem.changeColor("rainbow");
 		return ImgDem;
 	}
 	
@@ -162,5 +171,20 @@ public class ImageDemon {
 		return new int[]{0,0};
 	}
 	
-	
+	private void changeColor(String col){
+		
+		try {
+			if(col=="red"){
+				laserX = ImageIO.read(new File(REDLASERX));
+				laserY = ImageIO.read(new File(REDLASERY));
+			}				
+			else if(col=="rainbow"){
+				laserX = ImageIO.read(new File(RAINBOWLASERX));
+				laserY = ImageIO.read(new File(RAINBOWLASERY));
+			} 
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}	
 }

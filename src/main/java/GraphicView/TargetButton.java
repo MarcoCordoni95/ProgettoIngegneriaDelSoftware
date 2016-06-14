@@ -16,10 +16,9 @@ public class TargetButton extends ButtonStrategy{
 	public void paintComponent(Graphics g){
         super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g.create();
-		
-		g2.setColor(Color.BLACK);
-		g2.drawString("Target", getWidth()/2-20, getHeight()/2);
-	}
-	
-	
+        ImageDemon id = ImageDemon.getImageDemon();
+        id.drawLaserOnly(this, g2);
+        id.drawTarget(this, g2);
+        g2.dispose();
+	}	
 }

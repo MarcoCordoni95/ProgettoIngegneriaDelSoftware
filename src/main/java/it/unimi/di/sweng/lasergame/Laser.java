@@ -14,7 +14,7 @@ public class Laser {
 
 	//
 	private int x = 4, y = 0;
-	private int score;
+	private int score=0;
 	//
 	
 	
@@ -116,7 +116,7 @@ public class Laser {
 		Support [] p={null};
 		this.score=journey.size();
 		x=4; y=0;	//ripristino le coordinate iniziali per fargli rifare il ciclo
-		this.score=0;
+		
 		return journey.toArray(p); 	//ritorno la lista di celle percorse con in fondo un muro o un target
 	}
 	

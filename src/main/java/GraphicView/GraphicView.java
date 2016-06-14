@@ -26,11 +26,13 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 	private Controller cont;
 	private JPanel buttonGrid;
 	private JPanel optionGrid;
-	
+
+	private JComboBox<String> choice;
 	
 
 	public GraphicView(Model m){
 		super("Laser Game");
+		this.setLookandFeel();
 		Container co=this.getContentPane();
 		co.setLayout(new BorderLayout());
 		
@@ -45,12 +47,13 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		
 		
 		this.buttonGrid=new JPanel(new GridLayout(5, 5));
-		this.optionGrid=new JPanel(new FlowLayout());
+		this.optionGrid=new JPanel(new BorderLayout());
 		
-		this.addButton();
-		//this.optionGrid.add(new JLabel("qui contatori vari"));
+		
+		
 		
 		this.addOption();
+		this.addButton();
 		
 		
 		
@@ -66,26 +69,37 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 	}
 	
 	private void addOption() {
-		ShareScore score=new ShareScore();
-		ScoreDisplay display=new ScoreDisplay(score);
-		score.addObserver(display);
-		
-		JLabel scoreL=new JLabel("Score: ");
+		JLabel scoreL=new JLabel("Score: "+this.model.getScore());
 		JLabel nMoves=new JLabel("N°mosse "+this.model.getCount());
 		
 		this.optionGrid.setSize(200,100);
 		
 		
-		this.optionGrid.add(scoreL);
-		this.optionGrid.add(display);
-		this.optionGrid.add(nMoves);
+		JPanel option=new JPanel(new FlowLayout());
+		String[] s={"salumini","beretta","finiscono","in fretta"};
+		this.choice=new JComboBox<String>(s);
+			
+		
+		
+		
+		option.add(this.choice);
+		
+		
+		this.optionGrid.add(option,BorderLayout.WEST);
+		
+		JPanel info=new JPanel(new FlowLayout());
+		
+		info.add(scoreL);
+		info.add(nMoves);
+		this.optionGrid.add(info,BorderLayout.EAST);
 		
 		
 	}
 
 	public void start(){
-		//this.setLookandFeel();
+		
 		this.setSize(500, 500);
+		
 		this.setVisible(true);
 		
 	}
@@ -159,7 +173,7 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-	
+		
 		
 		this.buttonGrid.removeAll();
 		this.optionGrid.removeAll();
@@ -169,7 +183,11 @@ public class GraphicView extends JFrame implements ViewInterface , Observer{
 		this.optionGrid.revalidate();
 		this.buttonGrid.repaint();
 		this.optionGrid.revalidate();
-		
+		if(this.model.getWin()){
+			JOptionPane.showMessageDialog(this, "Contratulations.\n You have bested me this time");
+			this.model.setNewBoard();
+			
+		}
 	}
 
 	public Controller getController() {

@@ -88,12 +88,10 @@ public class Model extends Observable {
 			this.colorTrack=laser.newGetPercorso(board);
 			this.win=this.laser.getWin();
 			if(this.win){//controllo se ho vinto
-				ShareScore sc=newShareScore (this.score);
+				ShareScore sc=new ShareScore (this.score);
 				sc.share();//scrittura su file
-				JOptionPane.showMessageDialog(null, "Contratulations.\n You have bested me this time");
-				this.setNewBoard();
-				
 			}
+			this.score=this.laser.getScore();
 			this.setChanged();
 			this.notifyObservers(); 	//passo alla view tutto quello che contiene il model , gli passo l'oggetto osservato, ma non sono sicura di quello che fa () o (this), sulle api non è specificato 
 	}

@@ -1,6 +1,7 @@
 package GraphicView;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -18,8 +19,8 @@ import Model.MirrorCell;
 import Model.Model;
 
 import Model.TargetCell;
-
 import it.unimi.di.sweng.lasergame.ViewInterface;
+
 
 public class GraphicView extends JFrame implements ViewInterface, Observer {
 
@@ -36,7 +37,7 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 		Container co = this.getContentPane();
 		co.setLayout(new BorderLayout());
 
-		this.cont = new Controller(m, this); // il controller per questa
+		this.cont = new Controller(m,this); // il controller per questa
 												// finestra lo creo all'interno
 												// della finestra stessa,
 												// se mi dovesse servire lo
@@ -82,6 +83,31 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 
 		JPanel info = new JPanel(new FlowLayout());
 
+		
+		
+		String[] laserSelectorOption={"Laser classico","Fuoco","Arcobaleno"};
+		JComboBox<String> laserSelector = new JComboBox(laserSelectorOption);
+		JLabel laserSelectorLabel = new JLabel("Stile Laser");
+		laserSelector.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ImageDemon id = ImageDemon.getImageDemon();
+				switch(laserSelector.getSelectedIndex()){
+					case 0:
+						id.changeColor("red");
+					break;
+					case 1:
+						id.changeColor("fire");
+					break;
+					case 2:
+						id.changeColor("rainbow");
+				}
+				showAll();
+			}
+			
+		});
+		info.add(laserSelectorLabel);
+		info.add(laserSelector);
 		info.add(scoreL);
 		info.add(nMoves);
 		this.optionGrid.add(info, BorderLayout.EAST);
@@ -151,36 +177,32 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 
 	}
 
-	@Override
-	public void showAll() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-
-		this.buttonGrid.removeAll();
-		this.optionGrid.removeAll();
-		this.addButton();
-		this.addOption();
-		this.buttonGrid.revalidate();
-		this.optionGrid.revalidate();
-		this.buttonGrid.repaint();
-		this.optionGrid.revalidate();
-
-		String s = this.model.isPierlauro();
-		if (s != null) {
-			JOptionPane.showMessageDialog(this, s);
-			this.model.setNewBoard();
-
-		}
+		showAll();
 
 	}
 
 	public Controller getController() {
 
 		return this.cont;
+	}
+
+	@Override
+	public void showAll() {
+		this.buttonGrid.removeAll();
+		this.addButton();
+		this.buttonGrid.revalidate();
+		this.buttonGrid.repaint();
+		
+		String s = this.model.isPierlauro();
+		if (s != null) {
+			JOptionPane.showMessageDialog(this, s);
+			this.model.setNewBoard();
+
+		}
+		
 	}
 
 }

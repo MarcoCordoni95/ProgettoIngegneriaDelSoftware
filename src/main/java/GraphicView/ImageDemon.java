@@ -33,11 +33,11 @@ public class ImageDemon {
 
 	
 	
-	Image laserX;
-	Image laserY;
-	Image mirrorR;
-	Image mirrorL;
-	Image finish;
+	private static Image laserX;
+	private static Image laserY;
+	private static Image mirrorR;
+	private static Image mirrorL;
+	private static Image finish;
 	
 	public static ImageDemon ImgDem;
 	final Color L_COLOR = Color.red; 
@@ -60,7 +60,6 @@ public class ImageDemon {
 		if(ImgDem==null){
 			new ImageDemon();
 		}
-		ImgDem.changeColor("rainbow");
 		return ImgDem;
 	}
 		
@@ -180,18 +179,20 @@ public class ImageDemon {
 		return new int[]{0,0};
 	}
 	
-	private void changeColor(String col){
+	public void changeColor(String col){
 		
 		try {
-			if(col=="red"){
+			if(col.equals("red")){
+				laserX = null;
 				laserX = ImageIO.read(new File(REDLASERX));
 				laserY = ImageIO.read(new File(REDLASERY));
 			}				
-			else if(col=="rainbow"){
+			else if(col.equals("rainbow")){
+				System.out.println("ASD");
 				laserX = ImageIO.read(new File(RAINBOWLASERX));
 				laserY = ImageIO.read(new File(RAINBOWLASERY));
 			} 
-			else if(col=="fire"){
+			else if(col.equals("fire")){
 				laserX = ImageIO.read(new File(FIRELASERX));
 				laserY = ImageIO.read(new File(FIRELASERY));
 			} 

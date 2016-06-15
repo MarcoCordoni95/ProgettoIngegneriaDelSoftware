@@ -9,16 +9,19 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
 
+import Controller.Controller;
 import Model.CellStrategy;
 import Model.Model;
 
 public class ConsoleView implements Observer, ViewInterface{
 
-	private AbstractController controller;
+	private Controller controller;
 	private ArrayList<ArrayList<CellStrategy>> tabella;
 	private CellDrawStrategy strategy;
 	int punteggio;
 	int mosse;
+	
+	private final String help="q -> uscita\nm x y x1 y1 -> sposta lo specchio dalle coordinare x y a x1 y1\nr x y -> ruota lo specchio alle coordinate x y\n";
 	
 	public ConsoleView(){
 		strategy=new ConsoleDraw();
@@ -28,8 +31,15 @@ public class ConsoleView implements Observer, ViewInterface{
 
 	@Override
 	public void showAll() {
-		System.out.print("\033[2J\033[;H\033[0;0f");
+		int i=0;
+		System.out.print("Digitare ? per Lista comandi\n   ");
+		for(int j=0; j<5; j++){
+			System.out.print(Integer.toString(j)+" ");
+		}
+		System.out.println();
 		for(ArrayList<CellStrategy> row: tabella){
+			System.out.print(Integer.toString(i)+") ");
+			i++;
 			for(CellStrategy x: row){
 				strategy.draw(x);
 			}
@@ -40,10 +50,20 @@ public class ConsoleView implements Observer, ViewInterface{
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		setTable(((Model)arg0).getTabel());
+		Model m = (Model) arg0;
+		setTable(m.getTabel());
+		mosse=m.getCount();
+		punteggio=m.getScore();
 		showAll();
-		read();
+		if(m.getWin()){
+			System.out.println("VITTORIA! "+Integer.toString(punteggio)+" punti in "+Integer.toString(mosse)+" mosse.");
+			System.exit(0);
+		}
+		else{
+			read();
+		}
 	}
+	
 	
 	public void setTable(ArrayList<ArrayList<CellStrategy>> arrayList){
 		tabella=arrayList;
@@ -55,40 +75,52 @@ public class ConsoleView implements Observer, ViewInterface{
 	public void setScore(int p){
 		punteggio=p;
 	}
+	public void addController(Controller c){
+		controller=c ;
+	}
 	
 	public void read(){
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			String letta = reader.readLine();
 			if(letta.contains("m")){
-				letta=letta.substring(letta.indexOf('m'));
+				letta=letta.substring(letta.indexOf('m')+1);
+				System.out.println(letta);
 				Scanner scanner = new Scanner(letta);
 				int x = scanner.nextInt();
 				int y = scanner.nextInt();
 				int tx = scanner.nextInt();
 				int ty = scanner.nextInt();
 				scanner.close();
-				controller.move(x,y,tx,ty);
+				controller.move(y,x,ty,tx);
 			}
 			else if(letta.contains("r")){
-				letta=letta.substring(letta.indexOf('r'));
+				letta=letta.substring(letta.indexOf('r')+1);
 				Scanner scanner = new Scanner(letta);
 				int x = scanner.nextInt();
 				int y = scanner.nextInt();
 				scanner.close();
-				controller.rotate(x,y);
+				controller.rotate(y,x);
 			}
 			else if(letta.contains("q")){
 				System.exit(0);
 			}
+			else if(letta.contains("?")){
+				System.out.println(help);
+				showAll();
+				read();
+			}
 			
 		} catch (IOException e) {
-			
-			e.printStackTrace();
+			showAll();
+			read();
 		}
 		
 	}
 	
+	public void start(){
+		showAll();
+	}
 	
 	
 

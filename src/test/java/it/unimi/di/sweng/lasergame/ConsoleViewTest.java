@@ -46,7 +46,7 @@ public class ConsoleViewTest {
 		view.setTable(tab);
 		view.showAll();
 		
-		assertEquals("[2J[;H[0;0f[31m-  [0m[31m|  [0m[31m|  [0m[37m\\ [31m\\ \nMosse: 0 Punteggio: 0\n>>\n",output.getLog());
+		assertEquals("Digitare ? per Lista comandi\n"+"   0 1 2 3 4 \n"+"0) - | | / / \n"+"Mosse: 0 Punteggio: 0\n"+">>\n",output.getLog());
 		
 				
 		hardcoded = new ArrayList<CellStrategy>();
@@ -70,9 +70,8 @@ public class ConsoleViewTest {
 		hardcoded.add(m);
 		tab.add(hardcoded);
 		view.showAll();
-		assertEquals("[2J[;H[0;0f[31m-  [0m[31m|  [0m[31m|  [0m[37m\\ [31m\\ \nMosse: 0 Punteggio: 0\n>>\n"
-				+ "[2J[;H[0;0f[31m-  [0m[31m|  [0m[31m|  [0m[37m\\ [31m\\ \n"
-				+ "[31m-  [0m[31m|  [0m[31m|  [0m[37m\\ [31m\\ \nMosse: 0 Punteggio: 0\n>>\n",output.getLog());
+		assertEquals("Digitare ? per Lista comandi\n"+"   0 1 2 3 4 \n"+"0) - | | / / \n"+"Mosse: 0 Punteggio: 0\n"+">>\n"
+				+ "Digitare ? per Lista comandi\n   0 1 2 3 4 \n0) - | | / / \n1) - | | / / \nMosse: 0 Punteggio: 0\n>>\n",output.getLog());
 		
 	}
 

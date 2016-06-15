@@ -75,5 +75,8 @@ public class Controller implements ActionListener {
 	public void move(int x, int y, int x1, int y1) {
 		model.updateModel(x, y, x1, y1);
 	}
+	public void rotate(int x, int y){
+		model.updateModel(x, y, x, y);
+	}
 
 }

@@ -3,7 +3,7 @@ package Model;
 import it.unimi.di.sweng.lasergame.Laser;
 
 public class MirrorCell extends CellStrategy {
-	private int orientation;	//per ora pensavo di fare, 0 / e 1 \ (ovviamente gli slash sono gli specchi)
+	private int orientation;	
 	
 	public MirrorCell (int i){
 		this.orientation=i;
@@ -21,15 +21,12 @@ public class MirrorCell extends CellStrategy {
 				this.orientation=1;
 			else return;
 	}
-	/*
-	 * QUANDO VERRANNO SPOSTATI GLI SPECCHI C'E' BISOGNO DI UN METODO CHE RESETTA IL LASER A FALSE.
- 	 * 
-	 */
+	
 	@Override
 	public void action (Laser laser){	
 		int x;
 		x = laser.getDir();
-		if (orientation == 1) 		// l'orientamento = \
+		if (orientation == 1) 		
 			switch (x){ 
 			case 1: laser.setDir(4);
 				break;				//1= su, 2= giu, 3= destra, 4= sinistra
@@ -42,7 +39,7 @@ public class MirrorCell extends CellStrategy {
 			default:; 
 			}
 		
-		if (orientation == 0)		//l'orientamento specchio = /
+		if (orientation == 0)		
 			switch (x){ 
 			case 1: laser.setDir(3);
 				break;
@@ -55,7 +52,6 @@ public class MirrorCell extends CellStrategy {
 			default:;
 			}
 	}
-	
 
 	public void setOrientation(int o){
 		orientation=o;

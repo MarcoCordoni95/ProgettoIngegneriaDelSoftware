@@ -42,33 +42,25 @@ public class Controller implements ActionListener {
 
 		if (c == 1) {
 			int n = Integer.parseInt(butt.getName());
-			x = n / 5; // x=riga
-			y = n % 5; // y=colonna
+			x = n / 5;
+			y = n % 5;
 			if (!(board[x][y] instanceof MirrorCell))
-				c = 0; // controllo che la cella cliccata NON è uno specchio,
-						// inizializzo i clic
-		}
+				c = 0;
+			}
 
-		if (c == 2) { // questo controllo mi serve per vedere se è il secondo
-						// click, quello che determinerà la posizione
+		if (c == 2) { 
 			int n = Integer.parseInt(butt.getName());
 			x1 = n / 5;
 			y1 = n % 5;
 
-			if (x == x1 && y == y1) // controllo se al secondo click è stato
-									// premuto nella stessa casella, quindi si
-									// vuole cambiare l'orientamento
+			if (x == x1 && y == y1)
 				move(x, y, x1, y1);
 
-			if (board[x1][y1] instanceof EmptyCell) { // controllo che il
-														// sencondo click è su
-														// una empty cell in
-														// modo tale da non
-														// sovrascrivere specchi
+			if (board[x1][y1] instanceof EmptyCell) { 
 				move(x, y, x1, y1);
 				c = 0;
 			}
-			c = 0; // qualcosa non quadra, resettati i click
+			c = 0;
 		}
 	}
 
@@ -78,5 +70,4 @@ public class Controller implements ActionListener {
 	public void rotate(int x, int y){
 		model.updateModel(x, y, x, y);
 	}
-
 }

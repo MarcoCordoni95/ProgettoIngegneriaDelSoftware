@@ -2,10 +2,6 @@ package GraphicView;
 
 public class InputPaceMaker {
 	
-	/*
-	 *  nell'action listener del mouse tengo traccia della storia dei click con questa classe.
-	 */
-	
 	static final int READY=0;
 	static final int M_BEGIN = 1;
 	static final int M = 2;

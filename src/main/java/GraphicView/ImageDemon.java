@@ -180,8 +180,7 @@ public class ImageDemon {
 		return new int[]{0,0};
 	}
 	
-	private void changeColor(String col){
-		
+	private void changeColor(String col){	
 		try {
 			if(col=="red"){
 				laserX = ImageIO.read(new File(REDLASERX));

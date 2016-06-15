@@ -21,9 +21,6 @@ public abstract class CellStrategy {
 		return (laserList.size() != 0);
 	}
 
-	/*
-	 * da richiamare ogni volta che qualcosa cambia nella board
-	 */
 	public void purgeLaser() {
 		this.laserList.clear();
 	}

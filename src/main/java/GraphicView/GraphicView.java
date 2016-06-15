@@ -36,14 +36,7 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 		Container co = this.getContentPane();
 		co.setLayout(new BorderLayout());
 
-		this.cont = new Controller(m, this); // il controller per questa
-												// finestra lo creo all'interno
-												// della finestra stessa,
-												// se mi dovesse servire lo
-												// posso ottenere tramite il
-												// metodo getController() qui in
-												// fondo
-
+		this.cont = new Controller(m, this); 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.model = m;
@@ -106,12 +99,10 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 				}
 			}
 		} catch (Exception e) {
-			// If Nimbus is not available, fall back to cross-platform
 			try {
 
 				UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 			} catch (Exception ex) {
-				// not worth my time
 			}
 		}
 
@@ -182,5 +173,4 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 
 		return this.cont;
 	}
-
 }

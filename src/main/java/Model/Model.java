@@ -34,8 +34,7 @@ public class Model extends Observable {
 		this.laser.newGetPercorso(this.board);
 		this.score = this.laser.getScore();
 		this.win = this.laser.getWin();
-		this.updateView(); // mi serve per avvisare la view che è stato creato
-							// tutto e visualizzare la win se per random va.
+		this.updateView(); 
 	}
 
 	public String[] getDifficulties() {
@@ -62,29 +61,17 @@ public class Model extends Observable {
 		return this.board;
 	}
 
-	public void updateModel(int x, int y, int x1, int y1) { // i parametri sono
-															// le coordinate
-															// della posizione
+	public void updateModel(int x, int y, int x1, int y1) { 
 		if (x == x1 && y == y1 && (board[x][y] instanceof MirrorCell))
-			((MirrorCell) board[x][y]).setOrientation(); // casto l'oggetto
-															// perchè a questo
-															// punto sono
-															// mooooolto sicura
-															// che l'oggetto è
-															// di tipo
-															// mirrorCEll, nel
-															// controller c'è il
-															// controllo apposta
+			((MirrorCell) board[x][y]).setOrientation(); 
 		else {
 			this.board[x1][y1] = this.board[x][y];
-			this.board[x][y] = new EmptyCell(); // spostato banalmente l'oggetto
+			this.board[x][y] = new EmptyCell(); 
 		}
 		count++;
-		if (this.difficulty > 0) {// difficoltà avrà dei valori, da 1 a 5 per
-									// ora, 5 è lo score verrà
+		if (this.difficulty > 0) {
 			this.score *= difficulty;
-			if (this.count > (10 - difficulty)) { // 10 è un numero pensato un
-													// po' a caso
+			if (this.count > (10 - difficulty)) { 
 				this.lose = true;
 			}
 		}
@@ -92,19 +79,14 @@ public class Model extends Observable {
 		this.clearLaser();
 		this.colorTrack = laser.newGetPercorso(board);
 		this.win = this.laser.getWin();
-		if (this.win) {// controllo se ho vinto
+		if (this.win) {
 			ShareScore sc = new ShareScore(this.score);
-			sc.share();// scrittura su file
+			sc.share();
 		}
 		this.score = this.laser.getScore();
-		this.updateView();// passo alla view tutto quello che contiene il model
-							// , gli passo l'oggetto osservato, ma non sono
-							// sicura di quello che fa () o (this), sulle api
-							// non è specificato
+		this.updateView();
+		}
 
-	}
-
-	// FEATURE SPECIALE su richiesta di pierlauro
 	public String isPierlauro() {
 		if (difficulty == 7) {
 			if (this.win) {
@@ -133,10 +115,8 @@ public class Model extends Observable {
 		this.notifyObservers();
 	}
 
-	// ---------
 	public Support[] getTrack() {
 		return this.colorTrack;
-
 	}
 
 	public ArrayList<ArrayList<CellStrategy>> getTabel() {

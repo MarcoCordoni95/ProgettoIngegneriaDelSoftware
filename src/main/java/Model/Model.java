@@ -142,7 +142,7 @@ public class Model extends Observable {
 	public ArrayList<ArrayList<CellStrategy>> getTabel() {
 		ArrayList<ArrayList<CellStrategy>> ret = new ArrayList<ArrayList<CellStrategy>>();
 		for (int i = 0; i < 5; i++) {
-			ret.add((ArrayList) Arrays.asList(board));
+			ret.add(new ArrayList<CellStrategy>(Arrays.asList((board[i]))));
 		}
 		return ret;
 	}
@@ -156,5 +156,8 @@ public class Model extends Observable {
 			}
 		}
 		laser = new Laser();
+	}
+	public boolean getWin(){
+		return win;
 	}
 }

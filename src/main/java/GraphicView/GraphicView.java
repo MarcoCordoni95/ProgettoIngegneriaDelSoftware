@@ -29,7 +29,7 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 	private JPanel optionGrid;
 
 	private JComboBox<String> choice,lasers;
-	
+	private JButton butt;
 
 	public GraphicView(Model m) {
 		super("Laser Game");
@@ -51,9 +51,21 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 
 		this.addOption();
 		this.addButton();
-
+		this.butt=new JButton("Reset Game");
+		this.butt.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					model.setNewBoard();
+				
+			}
+		});
+				
+				
+				
 		co.add(optionGrid, BorderLayout.NORTH);
 		co.add(buttonGrid, BorderLayout.CENTER);
+		co.add(this.butt,BorderLayout.SOUTH);
 
 	}
 

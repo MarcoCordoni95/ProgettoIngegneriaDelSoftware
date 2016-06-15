@@ -15,6 +15,7 @@ public class Model extends Observable {
 	private int difficulty, score, count;
 	private CellStrategy[][] board = new CellStrategy[5][5];
 	private String[] difficulties = { "Easy", "Normal", "Hard", "Pierlauro!" };
+	private String[] lasers ={"Red","Fire","Rainbow"};
 
 	Support[] colorTrack;
 
@@ -39,6 +40,9 @@ public class Model extends Observable {
 
 	public String[] getDifficulties() {
 		return this.difficulties;
+	}
+	public String[] getLasers(){
+		return this.lasers;
 	}
 
 	public void setDifficulty(int i) {
@@ -140,4 +144,6 @@ public class Model extends Observable {
 	public boolean getWin(){
 		return win;
 	}
+
+
 }

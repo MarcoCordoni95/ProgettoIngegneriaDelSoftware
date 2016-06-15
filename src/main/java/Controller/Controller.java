@@ -35,6 +35,16 @@ public class Controller implements ActionListener {
 			this.model.setDifficulty(7);
 	}
 
+	public void setColor(String s){
+		if (s.equals("Easy"))
+			this.model.setDifficulty(1);
+		if (s.equals("Easy"))
+			this.model.setDifficulty(1);
+		if (s.equals("Easy"))
+			this.model.setDifficulty(1);
+		
+		
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		c++;

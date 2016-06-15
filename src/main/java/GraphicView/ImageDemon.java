@@ -2,21 +2,19 @@ package GraphicView;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Graphics;
+
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
 
-import com.sun.org.apache.bcel.internal.util.ClassLoader;
+
 
 import it.unimi.di.sweng.lasergame.Direction;
 import it.unimi.di.sweng.lasergame.Laser;

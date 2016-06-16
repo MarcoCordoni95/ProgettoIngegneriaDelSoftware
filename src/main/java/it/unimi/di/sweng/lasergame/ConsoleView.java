@@ -20,14 +20,18 @@ public class ConsoleView implements Observer, ViewInterface{
 	private CellDrawStrategy strategy;
 	int punteggio;
 	int mosse;
+	private boolean autoClose=true;
 	
 	private final String help="q -> uscita\nm x y x1 y1 -> sposta lo specchio dalle coordinare x y a x1 y1\nr x y -> ruota lo specchio alle coordinate x y\n";
 	
 	public ConsoleView(){
 		strategy=new ConsoleDraw();
 	}
+	public ConsoleView(boolean ac){
+		this();
+		autoClose=ac;
+	}
 
-	
 
 	@Override
 	public void showAll() {
@@ -57,7 +61,8 @@ public class ConsoleView implements Observer, ViewInterface{
 		showAll();
 		if(m.getWin()){
 			System.out.println("VITTORIA! "+Integer.toString(punteggio)+" punti in "+Integer.toString(mosse)+" mosse.");
-			System.exit(0);
+			if(autoClose)
+				System.exit(0);
 		}
 		else{
 			read();
@@ -85,7 +90,6 @@ public class ConsoleView implements Observer, ViewInterface{
 			String letta = reader.readLine();
 			if(letta.contains("m")){
 				letta=letta.substring(letta.indexOf('m')+1);
-				System.out.println(letta);
 				Scanner scanner = new Scanner(letta);
 				int x = scanner.nextInt();
 				int y = scanner.nextInt();

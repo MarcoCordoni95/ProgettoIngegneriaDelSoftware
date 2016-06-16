@@ -20,16 +20,16 @@ import it.unimi.di.sweng.lasergame.Direction;
 import it.unimi.di.sweng.lasergame.Laser;
 public class ImageDemon {
 	
-	private final String REDLASERX = "./src/Res/lx.png/"; 
-	private final String REDLASERY = "./src/Res/ly.png/"; 
-	private final String RAINBOWLASERX = "./src/Res/lxRainbow.png/"; 
-	private final String RAINBOWLASERY = "./src/Res/lyRainbow.png/"; 
-	private final String FIRELASERX = "./src/Res/lxFire.png/"; 
-	private final String FIRELASERY = "./src/Res/lyFire.png/"; 
+	private final String REDLASERX = "src/Res/lx.png/"; 
+	private final String REDLASERY = "src/Res/ly.png/"; 
+	private final String RAINBOWLASERX = "src/Res/lxRainbow.png/"; 
+	private final String RAINBOWLASERY = "src/Res/lyRainbow.png/"; 
+	private final String FIRELASERX = "src/Res/lxFire.png/"; 
+	private final String FIRELASERY = "src/Res/lyFire.png/"; 
 	
-	private final String STANDARDMIRROR_R = "./src/Res/mirrorR.png/"; 
-	private final String STANDARDMIRROR_L = "./src/Res/mirrorL.png/"; 
-	private final String FINISH = "./src/Res/finish.png/"; 
+	private final String STANDARDMIRROR_R = "src/Res/mirrorR.png/"; 
+	private final String STANDARDMIRROR_L = "src/Res/mirrorL.png/"; 
+	private final String FINISH = "src/Res/finish.png/"; 
 
 	
 	

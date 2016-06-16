@@ -7,12 +7,7 @@ import Model.CellStrategy;
 
 public class MirrorButton extends ButtonStrategy {
 
-	public MirrorButton(int i, String c, CellStrategy cs) {// il numero passato
-															// sarà un
-															// identificatore
-															// univoco
-															// all'interno della
-															// griglia
+	public MirrorButton(int i, String c, CellStrategy cs) {
 		super(i, c, cs);
 	}
 

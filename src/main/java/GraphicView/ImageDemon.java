@@ -20,17 +20,18 @@ import it.unimi.di.sweng.lasergame.Direction;
 import it.unimi.di.sweng.lasergame.Laser;
 public class ImageDemon {
 	
-	private final String REDLASERX = "./src/Res/lx.png/"; 
-	private final String REDLASERY = "./src/Res/ly.png/"; 
-	private final String RAINBOWLASERX = "./src/Res/lxRainbow.png/"; 
-	private final String RAINBOWLASERY = "./src/Res/lyRainbow.png/"; 
-	private final String FIRELASERX = "./src/Res/lxFire.png/"; 
-	private final String FIRELASERY = "./src/Res/lyFire.png/"; 
+	private final String REDLASERX = "src/Res/lx.png/"; 
+	private final String REDLASERY = "src/Res/ly.png/"; 
+	private final String RAINBOWLASERX = "src/Res/lxRainbow.png/"; 
+	private final String RAINBOWLASERY = "src/Res/lyRainbow.png/"; 
+	private final String FIRELASERX = "src/Res/lxFire.png/"; 
+	private final String FIRELASERY = "src/Res/lyFire.png/"; 
 	
-	private final String STANDARDMIRROR_R = "./src/Res/mirrorR.png/"; 
-	private final String STANDARDMIRROR_L = "./src/Res/mirrorL.png/"; 
-	private final String FINISH = "./src/Res/finish.png/"; 
+	private final String STANDARDMIRROR_R = "src/Res/mirrorR.png/"; 
+	private final String STANDARDMIRROR_L = "src/Res/mirrorL.png/"; 
+	private final String FINISH = "src/Res/finish.png/"; 
 
+	
 	
 	
 	private static Image laserX;
@@ -179,20 +180,20 @@ public class ImageDemon {
 		return new int[]{0,0};
 	}
 	
+
 	public void changeColor(String col){
-		
 		try {
-			if(col.equals("red")){
+			if(col.equals("Red")){
 				laserX = null;
 				laserX = ImageIO.read(new File(REDLASERX));
 				laserY = ImageIO.read(new File(REDLASERY));
 			}				
-			else if(col.equals("rainbow")){
+			else if(col.equals("Rainbow")){
 				System.out.println("ASD");
 				laserX = ImageIO.read(new File(RAINBOWLASERX));
 				laserY = ImageIO.read(new File(RAINBOWLASERY));
 			} 
-			else if(col.equals("fire")){
+			else if(col.equals("Fire")){
 				laserX = ImageIO.read(new File(FIRELASERX));
 				laserY = ImageIO.read(new File(FIRELASERY));
 			} 
@@ -201,4 +202,6 @@ public class ImageDemon {
 			e.printStackTrace();
 		}	
 	}	
+	
+	
 }

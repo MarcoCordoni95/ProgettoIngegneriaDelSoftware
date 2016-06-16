@@ -1,7 +1,7 @@
 package GraphicView;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
+
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -21,7 +21,6 @@ import Model.Model;
 import Model.TargetCell;
 import it.unimi.di.sweng.lasergame.ViewInterface;
 
-
 public class GraphicView extends JFrame implements ViewInterface, Observer {
 
 	private Model model;
@@ -29,7 +28,8 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 	private JPanel buttonGrid;
 	private JPanel optionGrid;
 
-	private JComboBox<String> choice;
+	private JComboBox<String> choice,lasers;
+	private JButton butt;
 
 	public GraphicView(Model m) {
 		super("Laser Game");
@@ -37,34 +37,41 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 		Container co = this.getContentPane();
 		co.setLayout(new BorderLayout());
 
-		this.cont = new Controller(m,this); // il controller per questa
-												// finestra lo creo all'interno
-												// della finestra stessa,
-												// se mi dovesse servire lo
-												// posso ottenere tramite il
-												// metodo getController() qui in
-												// fondo
+		this.cont = new Controller(m, this);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.model = m;
 
 		this.choice = new JComboBox<>(this.model.getDifficulties());
-
+		this.lasers=new JComboBox<>(this.model.getLasers());
+		
 		this.buttonGrid = new JPanel(new GridLayout(5, 5));
 		this.optionGrid = new JPanel(new BorderLayout());
 
 		this.addOption();
 		this.addButton();
-
+		this.butt=new JButton("Reset Game");
+		this.butt.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					model.setNewBoard();
+				
+			}
+		});
+				
+				
+				
 		co.add(optionGrid, BorderLayout.NORTH);
 		co.add(buttonGrid, BorderLayout.CENTER);
+		co.add(this.butt,BorderLayout.SOUTH);
 
 	}
 
 	private void addOption() {
 		JLabel scoreL = new JLabel("Score: " + this.model.getScore());
-		JLabel nMoves = new JLabel("N°mosse " + this.model.getCount());
+		JLabel nMoves = new JLabel("N°moves: " + this.model.getCount());
 
 		this.optionGrid.setSize(200, 100);
 
@@ -78,36 +85,32 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 			}
 		});
 		option.add(this.choice);
-
 		this.optionGrid.add(option, BorderLayout.WEST);
-
-		JPanel info = new JPanel(new FlowLayout());
-
 		
 		
-		String[] laserSelectorOption={"Laser classico","Fuoco","Arcobaleno"};
-		JComboBox<String> laserSelector = new JComboBox(laserSelectorOption);
-		JLabel laserSelectorLabel = new JLabel("Stile Laser");
-		laserSelector.addActionListener(new ActionListener(){
+		
+		JLabel laserSelectorLabel = new JLabel("Select Laser:");
+		this.lasers.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ImageDemon id = ImageDemon.getImageDemon();
-				switch(laserSelector.getSelectedIndex()){
-					case 0:
-						id.changeColor("red");
-					break;
-					case 1:
-						id.changeColor("fire");
-					break;
-					case 2:
-						id.changeColor("rainbow");
-				}
+				JComboBox<String> jcmbType = (JComboBox<String>) e.getSource();
+				String cmbType = (String) jcmbType.getSelectedItem();
+				
+					id.changeColor(cmbType);
+				
 				showAll();
 			}
-			
+
 		});
-		info.add(laserSelectorLabel);
-		info.add(laserSelector);
+		
+		option.add(laserSelectorLabel);
+		option.add(this.lasers);
+		this.optionGrid.add(this.lasers,BorderLayout.CENTER);
+		
+		JPanel info = new JPanel(new FlowLayout());
+
+		
 		info.add(scoreL);
 		info.add(nMoves);
 		this.optionGrid.add(info, BorderLayout.EAST);
@@ -132,12 +135,10 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 				}
 			}
 		} catch (Exception e) {
-			// If Nimbus is not available, fall back to cross-platform
 			try {
 
 				UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 			} catch (Exception ex) {
-				// not worth my time
 			}
 		}
 
@@ -177,7 +178,6 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 
 	}
 
-
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		showAll();
@@ -192,17 +192,21 @@ public class GraphicView extends JFrame implements ViewInterface, Observer {
 	@Override
 	public void showAll() {
 		this.buttonGrid.removeAll();
+		this.optionGrid.removeAll();
+		
+		this.addOption();
 		this.addButton();
+		
+		this.optionGrid.revalidate();
+		this.optionGrid.repaint();
 		this.buttonGrid.revalidate();
 		this.buttonGrid.repaint();
-		
 		String s = this.model.isPierlauro();
 		if (s != null) {
 			JOptionPane.showMessageDialog(this, s);
 			this.model.setNewBoard();
 
 		}
-		
-	}
 
+	}
 }

@@ -6,26 +6,22 @@ public class RandomCells {
 	
 	
 	
-	public  CellStrategy[][]filler(CellStrategy[][] board){//passo la matrice delle celle che so essere 5x5
+	public  CellStrategy[][]filler(CellStrategy[][] board){
 		Random rand=new Random();
 		boolean setTarget=false;
 		
-		this.nMirrors=rand.nextInt(13)+1;// cosi il numero di specchi sarà >=1 && <=13
-		 
+		this.nMirrors=rand.nextInt(13)+1;
 		int r,c;
-		
-		for(int i=0;i<this.nMirrors;i++){//ciclo finche ho specchi da mettere
+		for(int i=0;i<this.nMirrors;i++){
 				r=rand.nextInt(5);
 				c=rand.nextInt(5);
-				if( board[r][c]==null){//se la cella selezionata è gia occupata non metto nulla e la condizione di <=13 è rispettata
-					board[r][c]=new MirrorCell(rand.nextInt(2));//inserisco lo specchio con orientamento random	
+				if( board[r][c]==null){
+					board[r][c]=new MirrorCell(rand.nextInt(2));
 				}
-			
 		}
-		
-		
-		while(!setTarget){// aggiungo il target 
-			if((r=rand.nextInt(5))!=4 &&(c=rand.nextInt(5))!=0){//controllo che la posizione scelta per il target sia diversa da <4,0>(cella in basso a sx)
+
+		while(!setTarget){
+			if((r=rand.nextInt(5))!=4 &&(c=rand.nextInt(5))!=0){
 				board[r][c]=new TargetCell();
 				setTarget=true;
 			}	
@@ -37,13 +33,11 @@ public class RandomCells {
 					board[r][c]=new EmptyCell();
 			}
 		return board;
-		
 	}
 	
 	public static  String randomMirror(){
 		Random rand=new Random();
 		int i=rand.nextInt(2);
-		
 		
 		if (i==0)
 			return "/";
@@ -51,6 +45,5 @@ public class RandomCells {
 			return "\\";
 			else
 				return null;
-		
 	}
 }

@@ -1,9 +1,9 @@
 package it.unimi.di.sweng.lasergame;
 
-import java.io.IOException;
+
 
 import Controller.Controller;
-import GraphicView.GraphicView;
+
 import Model.Model;
 
 public class ConsoleMain {

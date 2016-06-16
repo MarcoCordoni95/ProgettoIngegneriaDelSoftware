@@ -26,7 +26,7 @@ public class Controller implements ActionListener {
 
 	public void setDiff(String s) {
 		if (s.equals("Easy"))
-			this.model.setDifficulty(1);
+			this.model.setDifficulty(0);
 		if (s.equals("Normal"))
 			this.model.setDifficulty(3);
 		if (s.equals("Hard"))

@@ -34,6 +34,12 @@ public class Model extends Observable {
 		this.laser.setDir(Direction.UP);
 		this.laser.newGetPercorso(this.board);
 		this.score = this.laser.getScore();
+		if (this.difficulty > 0) {
+			this.score *= this.difficulty;
+			if (this.count > (10 - this.difficulty)) { 
+				this.lose = true;
+			}
+		}
 		this.win = this.laser.getWin();
 		this.updateView(); 
 	}
@@ -73,12 +79,8 @@ public class Model extends Observable {
 			this.board[x][y] = new EmptyCell(); 
 		}
 		count++;
-		if (this.difficulty > 0) {
-			this.score *= difficulty;
-			if (this.count > (10 - difficulty)) { 
-				this.lose = true;
-			}
-		}
+		
+			
 
 		this.clearLaser();
 		this.colorTrack = laser.newGetPercorso(board);
@@ -88,6 +90,13 @@ public class Model extends Observable {
 			sc.share();
 		}
 		this.score = this.laser.getScore();
+		if (this.difficulty > 0) {
+			this.score *= this.difficulty;
+			if (this.count > (10 - this.difficulty)) { 
+				this.lose = true;
+			}
+		}
+		
 		this.updateView();
 		}
 

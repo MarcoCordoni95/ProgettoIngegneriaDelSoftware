@@ -20,26 +20,11 @@ public class Main {
 		Controller cont=x.getController();
 
 		m.addObserver(x);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		x.start();
 		
 		
-		UIManager.LookAndFeelInfo[] lafInfo = UIManager.getInstalledLookAndFeels();
 		
-		for(UIManager.LookAndFeelInfo x1:lafInfo){
-			System.out.println(x1.getClassName());
-			System.out.println(x1.getName());
-		}
-
 	}
 
 }
